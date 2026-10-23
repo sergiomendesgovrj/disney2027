@@ -92,6 +92,108 @@ nav .nav-sep{color:rgba(255,255,255,.2);padding:0 4px;flex-shrink:0}
   font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;
 }
 
+/* ===================== MIAMI HOTEL DESTAQUE ===================== */
+.miami-card{
+  border-radius:var(--r);overflow:hidden;margin-bottom:14px;
+  box-shadow:0 8px 32px rgba(0,0,0,.15);border:1.5px solid var(--border);
+}
+.miami-banner{
+  background:linear-gradient(135deg,#0d1b4a 0%,#1a3a7a 30%,#c75000 70%,#ff6b00 100%);
+  padding:22px 24px 18px;color:#fff;position:relative;overflow:hidden;
+}
+.miami-banner-bg{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:9rem;opacity:.07;user-select:none;filter:blur(2px);letter-spacing:-.5rem;
+}
+.miami-banner-content{position:relative;z-index:2}
+.miami-eyebrow{
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.70);
+  margin-bottom:6px;display:flex;align-items:center;gap:8px;
+}
+.miami-eyebrow span{background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.miami-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.3rem;line-height:1.1}
+.miami-sub{font-size:.82rem;color:rgba(255,255,255,.75);margin-top:4px}
+.miami-body{padding:18px 20px;background:var(--card)}
+.miami-info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:14px}
+.mi-info{background:var(--border);border-radius:10px;padding:11px 13px}
+.mi-info label{font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.mi-info span{font-weight:800;font-size:.9rem}
+.miami-tbd{
+  background:repeating-linear-gradient(45deg,var(--border) 0,var(--border) 2px,transparent 2px,transparent 10px);
+  border:2px dashed var(--muted);border-radius:12px;padding:14px 18px;
+  display:flex;gap:12px;align-items:center;
+}
+.miami-tbd h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.9rem}
+.miami-tbd p{font-size:.78rem;color:var(--muted);margin-top:2px}
+
+/* ===================== BOGOTÁ DESTAQUE ===================== */
+.bogota-card{
+  border-radius:var(--r);overflow:hidden;margin-bottom:14px;
+  box-shadow:0 8px 32px rgba(0,0,0,.18);
+  border:1.5px solid var(--border);
+}
+.bogota-banner{
+  background:linear-gradient(135deg,#003087 0%,#004cbf 35%,#7b0020 70%,#ce1126 100%);
+  padding:22px 24px 18px;color:#fff;position:relative;overflow:hidden;
+}
+.bogota-banner-bg{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:9rem;opacity:.08;user-select:none;filter:blur(2px);
+}
+.bogota-banner-content{position:relative;z-index:2}
+.bogota-eyebrow{
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:.68rem;
+  letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.70);
+  margin-bottom:6px;display:flex;align-items:center;gap:8px;
+}
+.bogota-eyebrow span{background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.bogota-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.35rem;line-height:1.1}
+.bogota-sub{font-size:.82rem;color:rgba(255,255,255,.75);margin-top:4px}
+
+/* Faixa amarela Colombia */
+.bogota-stripe{
+  height:6px;
+  background:linear-gradient(to right,#FCD116 50%,#003087 50% 75%,#CE1126 75%);
+}
+
+/* Timeline */
+.bogota-timeline{
+  display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;
+  padding:0;background:var(--card);
+}
+.bogota-timeline::-webkit-scrollbar{display:none}
+.bt-step{
+  flex:1;min-width:90px;padding:14px 10px;text-align:center;
+  position:relative;border-right:1px solid var(--border);
+}
+.bt-step:last-child{border-right:none}
+.bt-step::after{
+  content:'';position:absolute;top:50%;right:-1px;transform:translateY(-50%);
+  width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;
+  border-left:7px solid var(--border);z-index:1;
+}
+.bt-step:last-child::after{display:none}
+.bt-time{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.78rem;color:var(--muted);letter-spacing:.03em}
+.bt-emoji{font-size:1.4rem;margin:4px 0}
+.bt-label{font-size:.72rem;font-weight:700;color:var(--fg);line-height:1.3}
+.bt-note{font-size:.65rem;color:var(--muted);margin-top:2px;line-height:1.3}
+
+/* Atrações Bogotá */
+.bogota-body{padding:18px 20px;background:var(--card)}
+.bogota-spots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:520px){.bogota-spots{grid-template-columns:1fr}}
+.spot{background:var(--border);border-radius:12px;padding:13px 14px}
+.spot-emoji{font-size:1.5rem;margin-bottom:6px}
+.spot-name{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.82rem;margin-bottom:3px}
+.spot-desc{font-size:.75rem;color:var(--muted);line-height:1.4}
+.bogota-tip{
+  background:linear-gradient(135deg,rgba(0,48,135,.08),rgba(206,17,38,.06));
+  border:1.5px solid rgba(0,48,135,.15);
+  border-radius:12px;padding:12px 16px;font-size:.82rem;color:var(--fg);
+  display:flex;gap:10px;align-items:flex-start;
+}
+
 /* countdown */
 .countdown{
   display:flex;gap:8px;margin-bottom:16px;
@@ -326,6 +428,37 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
   </div>
   <p class="sec-sub">Todos os horários em horário local. Confirmar antes da viagem.</p>
 
+  <!-- PENDÊNCIAS -->
+  <div style="background:linear-gradient(135deg,#fff7ed,#fef3c7);border:2px solid #f59e0b;border-radius:var(--r);padding:20px 22px;margin-bottom:28px">
+    <div style="font-family:Montserrat,sans-serif;font-weight:900;font-size:.95rem;color:#92400e;margin-bottom:12px">⚠️ Pendências &amp; inconsistências identificadas</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:#78350f">
+        <span style="flex-shrink:0;background:#dc2626;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-top:1px">1</span>
+        <div><strong>Voos domésticos BSB → GIG (30/jan) não comprados.</strong> O AV198 decola às 01h40 de 31/jan — precisam estar no GIG às ~22h de 30/jan. Comprar com urgência antes que os preços subam.</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:#78350f">
+        <span style="flex-shrink:0;background:#dc2626;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-top:1px">2</span>
+        <div><strong>Hotel Miami (31 jan) não reservado.</strong> Chegam ~22h30 com 6 pessoas e bagagem. Confirmar recepção 24h e, de preferência, breakfast incluso.</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:#78350f">
+        <span style="flex-shrink:0;background:#f97316;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-top:1px">3</span>
+        <div><strong>Hotel Miami (16 fev) — crítico.</strong> Voo parte às 07h00 do dia 17 (estar no aeroporto às 04h30). Com 6 pessoas e bagagem de 18 dias, sair de Orlando após os fogos (~23h) e dirigir 4h seria arriscado. Recomendar hotel perto do MIA.</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:#78350f">
+        <span style="flex-shrink:0;background:#f97316;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-top:1px">4</span>
+        <div><strong>Carro: retirada no Porto de Miami (05/fev) e devolução no MIA (16/fev noite).</strong> Confirmar que a locadora permite retirada no porto — nem todas têm balcão lá. Alternativa: shuttle porto → aeroporto → retirar no MIA.</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:#78350f">
+        <span style="flex-shrink:0;background:#eab308;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-top:1px">5</span>
+        <div><strong>SeaWorld 2ª visita (14/fev).</strong> Muitos pacotes SeaWorld incluem uma visita gratuita de retorno — confirmar se o ingresso comprado inclui isso ou se será necessário comprar um segundo ingresso.</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:#78350f">
+        <span style="flex-shrink:0;background:#eab308;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-top:1px">6</span>
+        <div><strong>Seguro viagem não contratado.</strong> Obrigatório para visto americano e essencial — EUA não tem cobertura pública. Contratar para os 6 antes da entrevista consular de Bia e Duda (04/dez).</div>
+      </div>
+    </div>
+  </div>
+
   <!-- FASE 1 -->
   <div class="phase"><div class="ph-line"></div><span class="ph-label">🇧🇷 Partida do Brasil</span><div class="ph-line"></div></div>
 
@@ -346,29 +479,123 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
     </div>
   </div>
 
-  <div class="day">
-    <div class="day-visual" style="background:var(--miami-g)">
-      <div class="day-emoji-big">🌍</div>
-      <div class="day-date-short">DOM<br>31 JAN</div>
-    </div>
-    <div class="day-body">
-      <div class="day-meta"><span class="day-weekday">Domingo</span><span class="day-full-date">31 de Janeiro</span></div>
-      <div class="day-title">Rio → Bogotá → Miami</div>
-      <div class="day-desc">
-        <strong>01h40 · Avianca AV198</strong> decola do GIG → BOG · A320neo · ~6h20. <strong>Chegada Bogotá 06h00.</strong> Passeio rápido: La Candelaria, Plaza de Bolívar, Monserrate. <strong>Avianca AV006</strong> BOG → MIA. <strong>Chegada Miami ~22h30.</strong> Check-in hotel.
-      </div>
-      <div class="day-tags">
-        <span class="tag">🌙 AV198 GIG→BOG · 01h40</span>
-        <span class="tag">🛬 Bogotá 06h00</span>
-        <span class="tag">🇨🇴 Passeio Bogotá</span>
-        <span class="tag">✈️ AV006 BOG→MIA</span>
-        <span class="tag">🌙 Miami ~22h30</span>
+  <!-- CARD DESTAQUE: BOGOTÁ -->
+  <div class="bogota-card">
+
+    <!-- Banner -->
+    <div class="bogota-banner">
+      <div class="bogota-banner-bg">🇨🇴</div>
+      <div class="bogota-banner-content">
+        <div class="bogota-eyebrow">
+          <span>DOM · 31 JAN</span>
+          ✈️ Escala especial
+        </div>
+        <div class="bogota-title">Um dia em Bogotá 🇨🇴</div>
+        <div class="bogota-sub">Voo noturno do Rio · Escala + passeio na capital colombiana · Seguir para Miami</div>
       </div>
     </div>
+
+    <!-- Faixa tricolor Colombia -->
+    <div class="bogota-stripe"></div>
+
+    <!-- Timeline do dia -->
+    <div class="bogota-timeline">
+      <div class="bt-step">
+        <div class="bt-time">01h40</div>
+        <div class="bt-emoji">✈️</div>
+        <div class="bt-label">Decola GIG</div>
+        <div class="bt-note">AV198 · A320neo</div>
+      </div>
+      <div class="bt-step">
+        <div class="bt-time">06h00</div>
+        <div class="bt-emoji">🛬</div>
+        <div class="bt-label">Chegada BOG</div>
+        <div class="bt-note">Terminal 1</div>
+      </div>
+      <div class="bt-step">
+        <div class="bt-time">Manhã</div>
+        <div class="bt-emoji">🏛️</div>
+        <div class="bt-label">La Candelaria</div>
+        <div class="bt-note">Centro histórico</div>
+      </div>
+      <div class="bt-step">
+        <div class="bt-time">Tarde</div>
+        <div class="bt-emoji">⛰️</div>
+        <div class="bt-label">Monserrate</div>
+        <div class="bt-note">2.650m · teleférico</div>
+      </div>
+      <div class="bt-step">
+        <div class="bt-time">Noite</div>
+        <div class="bt-emoji">✈️</div>
+        <div class="bt-label">Decola BOG</div>
+        <div class="bt-note">AV006 → MIA</div>
+      </div>
+      <div class="bt-step">
+        <div class="bt-time">~22h30</div>
+        <div class="bt-emoji">🌙</div>
+        <div class="bt-label">Miami</div>
+        <div class="bt-note">Check-in hotel</div>
+      </div>
+    </div>
+
+    <!-- Atrações -->
+    <div class="bogota-body">
+      <div class="bogota-spots">
+        <div class="spot">
+          <div class="spot-emoji">🏛️</div>
+          <div class="spot-name">La Candelaria</div>
+          <div class="spot-desc">Bairro histórico colonial. Igrejas, museus e grafites coloridos. A alma de Bogotá.</div>
+        </div>
+        <div class="spot">
+          <div class="spot-emoji">🗿</div>
+          <div class="spot-name">Plaza de Bolívar</div>
+          <div class="spot-desc">Coração da cidade. Catedral Primada, Capitólio e Palácio de Justiça ao redor.</div>
+        </div>
+        <div class="spot">
+          <div class="spot-emoji">⛰️</div>
+          <div class="spot-name">Cerro Monserrate</div>
+          <div class="spot-desc">2.650m de altitude. Teleférico ou funicular. Vista panorâmica incrível de Bogotá!</div>
+        </div>
+      </div>
+      <div class="bogota-tip">
+        <span style="font-size:1.2rem;flex-shrink:0">💡</span>
+        <div><strong>Dica:</strong> Guardem os passaportes seguros e usem táxi oficial (Cabify/InDriver). O clima é fresco (~14°C) — levem um casaco leve. Peso colombiano: R$1 ≈ COP 800.</div>
+      </div>
+    </div>
+
   </div>
 
   <!-- FASE 2 -->
   <div class="phase"><div class="ph-line"></div><span class="ph-label">🚢 Cruzeiro Royal Caribbean</span><div class="ph-line"></div></div>
+
+  <!-- CARD DESTAQUE: HOTEL MIAMI PRÉ-CRUZEIRO -->
+  <div class="miami-card">
+    <div class="miami-banner">
+      <div class="miami-banner-bg">🌴🌊🌇</div>
+      <div class="miami-banner-content">
+        <div class="miami-eyebrow"><span>DOM–SEG · 31 JAN / 01 FEV</span> 🛏️ Pernoite</div>
+        <div class="miami-title">Hotel em Miami 🌴</div>
+        <div class="miami-sub">Chegada ~22h30 · Descanso · Manhã livre · Embarque cruzeiro às 16h00</div>
+      </div>
+    </div>
+    <div class="miami-body">
+      <div class="miami-info-grid">
+        <div class="mi-info"><label>📅 Check-in</label><span>Dom 31 Jan · ~23h</span></div>
+        <div class="mi-info"><label>📅 Check-out</label><span>Seg 01 Fev · manhã</span></div>
+        <div class="mi-info"><label>🌙 Noites</label><span>1 noite</span></div>
+        <div class="mi-info"><label>📍 Localização ideal</label><span>Perto do porto ou MIA</span></div>
+        <div class="mi-info"><label>💰 Estimativa</label><span>US$ 120–200</span></div>
+        <div class="mi-info"><label>Status</label><span style="color:#dc2626;font-weight:800">❌ A reservar</span></div>
+      </div>
+      <div class="miami-tbd">
+        <span style="font-size:1.5rem">🔍</span>
+        <div>
+          <h4>Hotel a definir — pesquisar opções</h4>
+          <p>Sugestões: hotéis perto do <strong>PortMiami</strong> (Brickell, Downtown) ou próximo ao aeroporto MIA. Horário de chegada tardio (~23h) — confirmar recepção 24h. Preferência: café da manhã incluso.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="day">
     <div class="day-visual" style="background:var(--cruise-g)">
@@ -378,8 +605,8 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
     <div class="day-body">
       <div class="day-meta"><span class="day-weekday">Segunda</span><span class="day-full-date">1 de Fevereiro</span></div>
       <div class="day-title">Embarque — Allure of the Seas</div>
-      <div class="day-desc">Embarque no <strong>Allure of the Seas</strong>, Porto de Miami. Partida às <strong>16h00</strong>. Explorar o navio, jantar a bordo, show de boas-vindas!</div>
-      <div class="day-tags"><span class="tag">⚓ Miami · T2</span><span class="tag">🕓 Partida 16h00</span><span class="tag">🛳️ Allure of the Seas</span></div>
+      <div class="day-desc">Manhã livre em Miami. Embarque no <strong>Allure of the Seas</strong> a partir das 13h (recomendado chegar às 13h–14h). Partida às <strong>16h00</strong>. Explorar o navio, jantar a bordo, show de boas-vindas!</div>
+      <div class="day-tags"><span class="tag">⚓ PortMiami</span><span class="tag">🕐 Embarque a partir 13h</span><span class="tag">🕓 Partida 16h00</span><span class="tag">🛳️ Allure of the Seas</span></div>
     </div>
   </div>
 
@@ -823,7 +1050,34 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
     </div>
   </div>
 
-  <div class="tbd-c"><span>🌙</span><h4>Hotel em Miami — 16 fev (possível)</h4><p>Check-out Celebration Suites. Voo parte às 07h00 do dia 17 (aeroporto às ~04h30). Avaliar se dormem em Miami ou saem de Orlando à noite.</p></div>
+  <!-- Miami volta -->
+  <div class="miami-card">
+    <div class="miami-banner">
+      <div class="miami-banner-bg">🌃✈️🌴</div>
+      <div class="miami-banner-content">
+        <div class="miami-eyebrow"><span>TER · 16 FEV</span> 🛏️ Última noite</div>
+        <div class="miami-title">Hotel em Miami — Retorno 🌙</div>
+        <div class="miami-sub">Saída Orlando após Magic Kingdom · Transfer ~4h · Voo 07h00 do dia 17 (estar no aeroporto às 04h30)</div>
+      </div>
+    </div>
+    <div class="miami-body">
+      <div class="miami-info-grid">
+        <div class="mi-info"><label>📅 Check-in</label><span>Ter 16 Fev · tarde/noite</span></div>
+        <div class="mi-info"><label>📅 Check-out</label><span>Qua 17 Fev · ~04h00</span></div>
+        <div class="mi-info"><label>🌙 Noites</label><span>1 noite (curta)</span></div>
+        <div class="mi-info"><label>📍 Localização ideal</label><span>Próximo MIA</span></div>
+        <div class="mi-info"><label>💰 Estimativa</label><span>US$ 100–160</span></div>
+        <div class="mi-info"><label>Status</label><span style="color:#dc2626;font-weight:800">❌ A reservar</span></div>
+      </div>
+      <div class="miami-tbd">
+        <span style="font-size:1.5rem">⚠️</span>
+        <div>
+          <h4>Atenção: voo às 07h00 — aeroporto às 04h30!</h4>
+          <p>Com 6 pessoas e muita bagagem após 18 dias, hotel perto do MIA é <strong>quase obrigatório</strong>. Avaliar fazer transfer Orlando → Miami já na tarde de terça, dormir bem e acordar às ~03h30. Ou saída de Orlando após os fogos (~23h) chegando Miami ~03h — risco alto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <hr class="div">
@@ -871,7 +1125,9 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
         <tr><td><strong>✈️ BSB ↔ GIG</strong></td><td>Voos domésticos ida e volta</td><td class="val pend">A confirmar</td><td style="text-align:right"><span class="badge b-no">❌ Comprar</span></td></tr>
         <tr><td><strong>🏨 Hotel Miami</strong></td><td>1–2 noites (31/jan + possível 16/fev)</td><td class="val pend">A confirmar</td><td style="text-align:right"><span class="badge b-no">❌ Reservar</span></td></tr>
         <tr><td><strong>🎢 Ingressos Parques</strong></td><td>Disney · Universal · SeaWorld</td><td class="val pend">A confirmar</td><td style="text-align:right"><span class="badge b-no">❌ Comprar</span></td></tr>
-        <tr><td><strong>🚗 Carro</strong></td><td>Orlando · 05–16/fev · Minivan</td><td class="val pend">A confirmar</td><td style="text-align:right"><span class="badge b-no">❌ Reservar</span></td></tr>
+        <tr><td><strong>🏨 Hotel Miami (ida)</strong></td><td>31 jan → 01 fev · 1 noite · perto do porto</td><td class="val pend">~US$ 150</td><td style="text-align:right"><span class="badge b-no">❌ Reservar</span></td></tr>
+        <tr><td><strong>🏨 Hotel Miami (volta)</strong></td><td>16 fev → 17 fev · 1 noite · perto MIA</td><td class="val pend">~US$ 130</td><td style="text-align:right"><span class="badge b-no">❌ Reservar</span></td></tr>
+        <tr><td><strong>🚗 Carro</strong></td><td>Porto Miami (05/fev) → MIA (16/fev noite) · Minivan</td><td class="val pend">A confirmar</td><td style="text-align:right"><span class="badge b-no">❌ Reservar</span></td></tr>
         <tr><td><strong>🛡️ Seguro Viagem</strong></td><td>6 pessoas · cobertura internacional</td><td class="val pend">A confirmar</td><td style="text-align:right"><span class="badge b-no">❌ Contratar</span></td></tr>
       </tbody>
       <tfoot><tr class="btotal"><td colspan="2"><strong>✅ Confirmado até agora</strong></td><td class="val" colspan="2"><strong>R$ 32.264,99 + US$ 1.966,96</strong></td></tr></tfoot>
