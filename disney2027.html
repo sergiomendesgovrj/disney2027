@@ -430,11 +430,11 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
 
   <!-- PENDÊNCIAS -->
   <div style="background:linear-gradient(135deg,#fff7ed,#fef3c7);border:2px solid #f59e0b;border-radius:var(--r);margin-bottom:28px;overflow:hidden">
-    <button onclick="var b=this.nextElementSibling;var ico=this.querySelector('.pend-ico');b.hidden=!b.hidden;ico.textContent=b.hidden?'+':'−'" style="width:100%;background:none;border:none;cursor:pointer;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left">
+    <button onclick="var b=this.nextElementSibling;var ico=this.querySelector('.pend-ico');var open=b.style.display==='flex';b.style.display=open?'none':'flex';ico.textContent=open?'+':'−'" style="width:100%;background:none;border:none;cursor:pointer;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left">
       <span style="font-family:Montserrat,sans-serif;font-weight:900;font-size:.95rem;color:#92400e">⚠️ Pendências &amp; inconsistências identificadas</span>
       <span class="pend-ico" style="font-family:Montserrat,sans-serif;font-weight:900;font-size:1.3rem;color:#f59e0b;line-height:1;flex-shrink:0">+</span>
     </button>
-    <div hidden style="padding:0 22px 20px;display:flex;flex-direction:column;gap:8px">
+    <div style="display:none;padding:0 22px 20px;flex-direction:column;gap:8px">
       <div style="display:flex;gap:10px;align-items:flex-start;font-size:.84rem;color:#78350f">
         <span style="flex-shrink:0;background:#dc2626;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:900;margin-top:1px">1</span>
         <div><strong>Voos domésticos BSB → GIG (30/jan) não comprados.</strong> O AV198 decola às 01h40 de 31/jan — precisam estar no GIG às ~22h de 30/jan. Comprar com urgência antes que os preços subam.</div>
