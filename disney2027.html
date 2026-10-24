@@ -406,6 +406,8 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
       <div class="cd-box"><div class="cd-num" id="cd-mo">--</div><div class="cd-lbl">meses</div></div>
       <div class="cd-box"><div class="cd-num" id="cd-d">--</div><div class="cd-lbl">dias</div></div>
       <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">horas</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">min</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">seg</div></div>
     </div>
   </div>
 
@@ -1180,10 +1182,12 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
     var mo=(t.getFullYear()-n.getFullYear())*12+(t.getMonth()-n.getMonth());
     var base=new Date(n.getFullYear(),n.getMonth()+mo,n.getDate(),n.getHours());
     if(base>t){mo--;base=new Date(n.getFullYear(),n.getMonth()+mo,n.getDate(),n.getHours());}
-    var remDiff=t-base, d=Math.floor(remDiff/864e5), h=Math.floor((remDiff%864e5)/36e5);
+    var remDiff=t-base, d=Math.floor(remDiff/864e5), h=Math.floor((remDiff%864e5)/36e5), m=Math.floor((remDiff%36e5)/6e4), s=Math.floor((remDiff%6e4)/1e3);
     document.getElementById('cd-mo').textContent=mo;
     document.getElementById('cd-d').textContent=d;
     document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
   }
   tick(); setInterval(tick,1000);
 })();
