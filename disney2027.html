@@ -258,33 +258,79 @@ hr.div{border:none;border-top:2px solid var(--border)}
   background:var(--border);color:var(--muted)}
 .tag-t{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
 
-/* ===================== PARK VISUAL CARDS ===================== */
-.park-card{
-  border-radius:var(--r);overflow:hidden;margin-bottom:14px;
+/* ===================== PARK GRID + MODALS ===================== */
+.park-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
+@media(max-width:560px){.park-grid{grid-template-columns:1fr}}
+.pcard{
+  border-radius:var(--r);overflow:hidden;cursor:pointer;
   box-shadow:var(--shadow);border:1.5px solid var(--border);
+  position:relative;aspect-ratio:3/2;min-height:150px;
+  display:flex;align-items:flex-end;
+  transition:transform .18s,box-shadow .18s;
 }
-.park-banner{
-  position:relative;min-height:140px;display:flex;align-items:flex-end;
-  padding:20px;overflow:hidden;
+.pcard:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.22)}
+.pcard-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.pcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.18) 55%,rgba(0,0,0,.04) 100%)}
+.pcard-emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4.5rem;opacity:.13;filter:blur(1px);pointer-events:none;user-select:none}
+.pcard-content{position:relative;z-index:2;padding:12px 14px;width:100%}
+.pcard-date{color:rgba(255,255,255,.7);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.pcard-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1rem;color:#fff;line-height:1.2}
+.pcard-sub{color:rgba(255,255,255,.62);font-size:.72rem;margin-top:2px}
+.pcard-arrow{position:absolute;right:10px;bottom:12px;color:rgba(255,255,255,.45);font-size:1.2rem;line-height:1;transition:color .18s,transform .18s}
+.pcard:hover .pcard-arrow{color:#fff;transform:translateX(3px)}
+/* Modal */
+.park-modal{
+  display:none;position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,.58);backdrop-filter:blur(5px);
+  align-items:center;justify-content:center;
+  padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
 }
-.park-banner-bg{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:7rem;opacity:.18;filter:blur(1px);user-select:none;
+.park-modal.open{display:flex}
+.pm-inner{
+  background:var(--card);border-radius:calc(var(--r)*1.5);
+  max-width:620px;width:100%;max-height:88vh;
+  overflow-y:auto;box-shadow:0 28px 80px rgba(0,0,0,.45);
+  position:relative;
 }
-.park-banner-content{position:relative;z-index:2}
-.park-banner h3{
-  font-family:'Montserrat',sans-serif;font-weight:900;
-  font-size:1.3rem;color:#fff;line-height:1.1;
+.pm-header{
+  padding:22px 22px 16px;position:relative;
+  border-radius:calc(var(--r)*1.5) calc(var(--r)*1.5) 0 0;
+  color:#fff;
 }
-.park-banner .pb-date{color:rgba(255,255,255,.75);font-size:.82rem;font-weight:700;margin-bottom:4px}
-.park-body{padding:16px 20px;background:var(--card)}
-.park-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.park-attr{
-  display:flex;align-items:center;gap:6px;font-size:.84rem;
-  color:var(--muted);padding:4px 0;
+.pm-close{
+  position:absolute;top:12px;right:12px;
+  background:rgba(255,255,255,.18);border:none;color:#fff;
+  border-radius:50%;width:32px;height:32px;cursor:pointer;
+  font-size:1rem;display:flex;align-items:center;justify-content:center;
+  transition:background .15s;line-height:1;
 }
-.park-attrs{display:grid;grid-template-columns:1fr 1fr;gap:0;}
-@media(max-width:520px){.park-attrs{grid-template-columns:1fr}}
+.pm-close:hover{background:rgba(255,255,255,.32)}
+.pm-hdate{font-size:.72rem;font-weight:700;opacity:.72;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.pm-htitle{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.35rem;line-height:1.15}
+.pm-hsub{font-size:.82rem;opacity:.78;margin-top:3px}
+.pm-body{padding:18px 20px 22px}
+.pm-section{margin-bottom:16px}
+.pm-section h4{font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;border-bottom:1px solid var(--border);padding-bottom:5px}
+.pm-item{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:8px 10px;border-radius:9px;
+  background:var(--bg);border:1px solid var(--border);
+  margin-bottom:6px;
+}
+.pm-icon{font-size:1.05rem;flex-shrink:0;margin-top:1px}
+.pm-item strong{display:block;font-weight:700;font-size:.84rem;color:var(--fg);margin-bottom:1px}
+.pm-item span{color:var(--muted);font-size:.78rem;line-height:1.45}
+.pm-kids{background:linear-gradient(135deg,rgba(249,168,212,.12),rgba(167,139,250,.1));border:1px solid rgba(249,168,212,.28);border-radius:10px;padding:11px 13px;margin-bottom:16px}
+.pm-kids-hd{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#be185d;margin-bottom:8px}
+.pm-ll{background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(139,92,246,.07));border:1px solid rgba(59,130,246,.2);border-radius:10px;padding:11px 13px;margin-bottom:16px}
+.pm-ll-hd{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#2563eb;margin-bottom:8px}
+.pm-link{
+  display:flex;align-items:center;gap:8px;padding:10px 13px;
+  border-radius:9px;background:var(--accent);color:#fff;
+  text-decoration:none;font-size:.82rem;font-weight:700;
+  margin-top:8px;transition:opacity .15s;
+}
+.pm-link:hover{opacity:.88}
 
 /* ===================== CRUISE ===================== */
 .cruise-header{
@@ -873,159 +919,411 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
     <div class="sec-icon" style="background:linear-gradient(135deg,#c62828,#0d47a1)">🎢</div>
     <div class="sec-title">Guia dos Parques</div>
   </div>
-  <p class="sec-sub">Dicas e destaques de cada parque da viagem.</p>
+  <p class="sec-sub">Clique em cada parque para ver dicas detalhadas, estratégias Lightning Lane e atrações.</p>
 
-  <!-- Animal Kingdom -->
-  <div class="park-card">
-    <div class="park-banner" style="background:linear-gradient(135deg,#1b5e20 0%,#33691e 40%,#1565c0 100%);min-height:160px">
-      <div class="park-banner-bg">🦁🦒🦕🌿</div>
-      <div class="park-banner-content">
-        <div class="pb-date">DOM · 07 FEV</div>
-        <h3>🌿 Disney's Animal Kingdom</h3>
+  <div class="park-grid">
+
+    <div class="pcard" onclick="openPark('ak')">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#1b5e20 0%,#33691e 45%,#1565c0 100%)"></div>
+      <div class="pcard-emoji">🦁🌿🦕</div>
+      <div class="pcard-overlay"></div>
+      <div class="pcard-content">
+        <div class="pcard-date">DOM · 07 FEV</div>
+        <div class="pcard-name">🌿 Animal Kingdom</div>
+        <div class="pcard-sub">Pandora · Safaris · Expedition Everest</div>
       </div>
+      <div class="pcard-arrow">›</div>
     </div>
-    <div class="park-body">
-      <div class="park-attrs">
-        <div class="park-attr">🦕 <strong>Pandora</strong> — Avatar Flight of Passage + Na'vi River Journey</div>
-        <div class="park-attr">🦒 <strong>Kilimanjaro Safaris</strong> — animais reais, de manhã cedo</div>
-        <div class="park-attr">⛰️ <strong>Expedition Everest</strong> — montanha-russa temática</div>
-        <div class="park-attr">⚡ <strong>Lightning Lane</strong> — vale muito para Avatar FoP</div>
+
+    <div class="pcard" onclick="openPark('ioa')">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#7b3200 0%,#c45c00 50%,#4a148c 100%)"></div>
+      <div class="pcard-emoji">🧙⚡🦖</div>
+      <div class="pcard-overlay"></div>
+      <div class="pcard-content">
+        <div class="pcard-date">SEG · 08 FEV</div>
+        <div class="pcard-name">🧙 Islands of Adventure</div>
+        <div class="pcard-sub">Hagrid's · Hogsmeade · VelociCoaster</div>
       </div>
-      <div class="park-tags">
-        <span class="tag">📍 Disney Springs area</span><span class="tag">⏰ Abrir antes de todos</span><span class="tag">🦕 Pandora = prioridade #1</span>
+      <div class="pcard-arrow">›</div>
+    </div>
+
+    <div class="pcard" onclick="openPark('sw')">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#006064 0%,#0277bd 50%,#1a237e 100%)"></div>
+      <div class="pcard-emoji">🐋🦈🐬</div>
+      <div class="pcard-overlay"></div>
+      <div class="pcard-content">
+        <div class="pcard-date">TER · 09 FEV + DOM · 14 FEV</div>
+        <div class="pcard-name">🌊 SeaWorld Orlando</div>
+        <div class="pcard-sub">Mako · Manta · Sesame Street Land</div>
+      </div>
+      <div class="pcard-arrow">›</div>
+    </div>
+
+    <div class="pcard" onclick="openPark('usg')">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#4a0080 0%,#c45c00 55%,#1b5e20 100%)"></div>
+      <div class="pcard-emoji">🎭🎺🧙</div>
+      <div class="pcard-overlay"></div>
+      <div class="pcard-content">
+        <div class="pcard-date">QUA · 10 FEV</div>
+        <div class="pcard-name">🎭 Universal Studios</div>
+        <div class="pcard-sub">Diagon Alley · Mardi Gras · Mummy</div>
+      </div>
+      <div class="pcard-arrow">›</div>
+    </div>
+
+    <div class="pcard" onclick="openPark('hs')">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#0d1b4a 0%,#1a237e 40%,#7b1fa2 100%)"></div>
+      <div class="pcard-emoji">⭐🚀🎬</div>
+      <div class="pcard-overlay"></div>
+      <div class="pcard-content">
+        <div class="pcard-date">QUI · 11 FEV</div>
+        <div class="pcard-name">⭐ Hollywood Studios</div>
+        <div class="pcard-sub">Rise of the Resistance · Fantasmic!</div>
+      </div>
+      <div class="pcard-arrow">›</div>
+    </div>
+
+    <div class="pcard" onclick="openPark('ep')">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#1565c0 0%,#00695c 50%,#e65100 100%)"></div>
+      <div class="pcard-emoji">🌎🚀🇧🇷</div>
+      <div class="pcard-overlay"></div>
+      <div class="pcard-content">
+        <div class="pcard-date">SEX · 12 FEV</div>
+        <div class="pcard-name">🌎 EPCOT</div>
+        <div class="pcard-sub">Guardians · World Showcase · Luminous</div>
+      </div>
+      <div class="pcard-arrow">›</div>
+    </div>
+
+    <div class="pcard" onclick="openPark('mk')" style="grid-column:1/-1">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#1a237e 0%,#c62828 35%,#880e4f 100%)"></div>
+      <div class="pcard-emoji">🏰✨⚡</div>
+      <div class="pcard-overlay"></div>
+      <div class="pcard-content">
+        <div class="pcard-date">TER · 16 FEV · GRANDE ENCERRAMENTO 🎉</div>
+        <div class="pcard-name">🏰 Magic Kingdom — O Dia da Magia!</div>
+        <div class="pcard-sub">TRON · Seven Dwarfs · Happily Ever After · Fogos de artifício no Castelo</div>
+      </div>
+      <div class="pcard-arrow">›</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== PARK MODALS ===== -->
+
+<!-- Animal Kingdom -->
+<div class="park-modal" id="modal-ak" onclick="if(event.target===this)closePark()">
+  <div class="pm-inner">
+    <div class="pm-header" style="background:linear-gradient(135deg,#1b5e20 0%,#33691e 45%,#1565c0 100%)">
+      <button class="pm-close" onclick="closePark()">✕</button>
+      <div class="pm-hdate">DOM · 07 FEV 2027</div>
+      <div class="pm-htitle">🌿 Disney's Animal Kingdom</div>
+      <div class="pm-hsub">O parque mais imersivo da Disney — Pandora te espera!</div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-ll">
+        <div class="pm-ll-hd">⚡ Lightning Lane — Prioridades</div>
+        <div class="pm-item"><div class="pm-icon">🦕</div><div><strong>Avatar: Flight of Passage</strong><span>LL Individual ~US$22/pessoa · Reserve às 7h no app antes de entrar · Sem LL, espera 2h+ nos horários de pico</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌊</div><div><strong>Na'vi River Journey</strong><span>LL Multi · Perfeita para Bia e Duda — serena, visualmente linda, sem altura mínima</span></div></div>
+      </div>
+      <div class="pm-kids">
+        <div class="pm-kids-hd">👧👧 Para Bia e Duda (11 anos)</div>
+        <div class="pm-item"><div class="pm-icon">🌊</div><div><strong>Na'vi River Journey</strong><span>Pandora à noite em bote — plantas bioluminescentes que brilham de perto. Encantador!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🦁</div><div><strong>Festival of the Lion King</strong><span>Show musical com acrobacias, dança e personagens — energia altíssima, todas vão adorar</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌳</div><div><strong>Desafio: 325 animais na Árvore da Vida</strong><span>Procurar os animais esculpidos no tronco gigante — missão perfeita para as gêmeas!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎯 Estratégia do Dia</h4>
+        <div class="pm-item"><div class="pm-icon">🌅</div><div><strong>Chegar 45 min antes da abertura</strong><span>Entrar correndo para Pandora — Flight of Passage direto antes de qualquer pessoa</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🦒</div><div><strong>Kilimanjaro Safaris de manhã cedo</strong><span>Animais mais ativos nas primeiras horas. Leões, girafas, elefantes, hipopótamos em vida real!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌙</div><div><strong>Pandora à noite é mágica</strong><span>As plantas bioluminescentes acendem ao anoitecer — Pandora vira outro mundo completamente</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌧️</div><div><strong>Kali River Rapids</strong><span>Atração d'água — todo mundo fica encharcado. Levar poncho ou roupa extra!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎡 Top Atrações</h4>
+        <div class="pm-item"><div class="pm-icon">🦕</div><div><strong>Avatar: Flight of Passage</strong><span>Simulador 3D voando de banshee sobre Pandora — para muitos, a melhor atração da Disney no mundo</span></div></div>
+        <div class="pm-item"><div class="pm-icon">⛰️</div><div><strong>Expedition Everest</strong><span>Montanha-russa com o Yeti — vai para a frente e para trás de surpresa!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🦒</div><div><strong>Kilimanjaro Safaris</strong><span>Safari em veículo aberto: leões, girafas, hipopótamos, rinocerontes e muito mais</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌊</div><div><strong>Kali River Rapids</strong><span>Rafting pelo Himalaia — divertidíssimo no calor de fevereiro</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎪 Shows & Experiências</h4>
+        <div class="pm-item"><div class="pm-icon">🦁</div><div><strong>Festival of the Lion King</strong><span>Show em arena com acrobacias, dança e músicas do Rei Leão — checar horários no app</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐠</div><div><strong>Finding Nemo: The Big Blue</strong><span>Musical aquático com fantoches gigantes — delicado, musical e muito bonito</span></div></div>
+      </div>
+      <a class="pm-link" href="https://www.vaipradisney.com/disney/parques/animal-kingdom/" target="_blank">🌿 Mais dicas no VaiPraDisney →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Universal Islands of Adventure -->
+<div class="park-modal" id="modal-ioa" onclick="if(event.target===this)closePark()">
+  <div class="pm-inner">
+    <div class="pm-header" style="background:linear-gradient(135deg,#7b3200 0%,#c45c00 50%,#4a148c 100%)">
+      <button class="pm-close" onclick="closePark()">✕</button>
+      <div class="pm-hdate">SEG · 08 FEV 2027</div>
+      <div class="pm-htitle">🧙 Islands of Adventure</div>
+      <div class="pm-hsub">Harry Potter, Jurassic World e os super-heróis da Marvel</div>
+    </div>
+    <div class="pm-body">
+      <div class="pm-ll">
+        <div class="pm-ll-hd">🎟️ Universal Express Pass</div>
+        <div class="pm-item"><div class="pm-icon">🎟️</div><div><strong>Express Pass vale muito aqui!</strong><span>Pula a fila de quase todas as atrações — comprar online com antecedência. Hagrid's NÃO inclui Express.</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🏍️</div><div><strong>Hagrid's: estratégia especial</strong><span>Chegar 1h antes do parque abrir e ir direto. É a única forma de pegar com espera razoável</span></div></div>
+      </div>
+      <div class="pm-kids">
+        <div class="pm-kids-hd">👧👧 Para Bia e Duda (11 anos)</div>
+        <div class="pm-item"><div class="pm-icon">🦅</div><div><strong>Flight of the Hippogriff</strong><span>Mini coaster no mundo de Harry Potter — ótima para quem ainda está pegando o jeito!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🪄</div><div><strong>Varinha Interativa em Hogsmeade</strong><span>Comprar varinha e ativar os pontos mágicos pela Rua Hagrid — missão divertidíssima!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐈</div><div><strong>The Cat in the Hat</strong><span>Atração familiar clássica na Dr. Seuss Landing — sem fila grande, super divertida</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎯 Estratégia do Dia</h4>
+        <div class="pm-item"><div class="pm-icon">⏰</div><div><strong>Chegar 1h antes do abrir</strong><span>Fila para Hagrid's começa a formar muito antes. Ser dos primeiros = espera de 30-45min ao invés de 3h</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🧙</div><div><strong>Hogsmeade de manhã</strong><span>Mais tranquilo cedo. Explorar a rua, tomar Butterbeer, fotos em frente ao Castelo de Hogwarts</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🦖</div><div><strong>Jurassic World / Marvel no meio do dia</strong><span>VelociCoaster e Spider-Man enquanto todo mundo está no mundo de Potter</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎡 Top Atrações</h4>
+        <div class="pm-item"><div class="pm-icon">🏍️</div><div><strong>Hagrid's Magical Creatures Motorbike</strong><span>Melhor atração do parque — viagem de moto pelo mundo mágico com criaturas animatrônicas incríveis</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🦖</div><div><strong>Jurassic World VelociCoaster</strong><span>Mais rápida e intensa da Universal — inversões espetaculares sobre a lagoa</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🕷️</div><div><strong>The Amazing Adventures of Spider-Man</strong><span>Clássico imperdível: simulador 4D com Homem-Aranha salvando a cidade</span></div></div>
+        <div class="pm-item"><div class="pm-icon">💚</div><div><strong>Incredible Hulk Coaster</strong><span>Lançamento 0-100km/h em 2 segundos — coração na boca!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🍺 Experiências Imperdíveis</h4>
+        <div class="pm-item"><div class="pm-icon">🍺</div><div><strong>Butterbeer!</strong><span>Gelada com espuma ou quente — versão sem álcool disponível. Tomar pelo menos duas!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">📸</div><div><strong>Foto em frente ao Castelo de Hogwarts</strong><span>Cartão postal obrigatório da viagem — manhã cedo tem menos gente</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🪄</div><div><strong>Varinha Interativa</strong><span>Mapa com pontos de magia espalhados por Hogsmeade — comprar na Ollivanders com cerimônia!</span></div></div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Universal IOA -->
-  <div class="park-card">
-    <div class="park-banner" style="background:linear-gradient(135deg,#7b3200 0%,#c45c00 50%,#4a148c 100%);min-height:160px">
-      <div class="park-banner-bg">🧙⚡🦖🦸</div>
-      <div class="park-banner-content">
-        <div class="pb-date">SEG · 08 FEV</div>
-        <h3>🧙 Universal Islands of Adventure</h3>
-      </div>
+<!-- SeaWorld -->
+<div class="park-modal" id="modal-sw" onclick="if(event.target===this)closePark()">
+  <div class="pm-inner">
+    <div class="pm-header" style="background:linear-gradient(135deg,#006064 0%,#0277bd 50%,#1a237e 100%)">
+      <button class="pm-close" onclick="closePark()">✕</button>
+      <div class="pm-hdate">TER · 09 FEV + DOM · 14 FEV 2027</div>
+      <div class="pm-htitle">🌊 SeaWorld Orlando</div>
+      <div class="pm-hsub">A mais rápida da Flórida + animais marinhos incríveis</div>
     </div>
-    <div class="park-body">
-      <div class="park-attrs">
-        <div class="park-attr">🧙 <strong>Hagrid's Motorbike</strong> — a melhor atração do parque</div>
-        <div class="park-attr">🏰 <strong>Hogsmeade</strong> — Wizarding World of Harry Potter</div>
-        <div class="park-attr">⚡ <strong>VelociCoaster</strong> — montanha-russa incrível</div>
-        <div class="park-attr">🦸 <strong>Marvel</strong> — Spider-Man, Hulk coaster</div>
+    <div class="pm-body">
+      <div class="pm-ll">
+        <div class="pm-ll-hd">⚡ Quick Queue (SeaWorld)</div>
+        <div class="pm-item"><div class="pm-icon">🦈</div><div><strong>Quick Queue para Mako e Ice Breaker</strong><span>Disponível para pular fila nas coasters principais — checar valor no dia</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎟️</div><div><strong>Confirmar 2ª visita gratuita!</strong><span>SeaWorld frequentemente inclui retorno gratuito no mesmo ingresso — confirmar na compra</span></div></div>
       </div>
-      <div class="park-tags">
-        <span class="tag">⏰ Hagrid's cedo</span><span class="tag">🎟️ Universal Express</span><span class="tag">🧙 Butterbeer!</span>
+      <div class="pm-kids">
+        <div class="pm-kids-hd">👧👧 Para Bia e Duda (11 anos)</div>
+        <div class="pm-item"><div class="pm-icon">🎠</div><div><strong>Sesame Street Land</strong><span>Área dedicada à Vila Sésamo com atrações familiares — adorável!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐟</div><div><strong>Stingray Cove</strong><span>Tocar raias na mão com isca de peixe — experiência incrível e inesquecível!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐬</div><div><strong>Dolphin Nursery</strong><span>Ver filhotes de golfinho de pertinho — de dar o coração!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎡 Top Atrações</h4>
+        <div class="pm-item"><div class="pm-icon">🦈</div><div><strong>Mako</strong><span>A mais rápida da Flórida — 110 km/h, 62m de altura. Pura adrenalina!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐟</div><div><strong>Manta</strong><span>Flying coaster de barriga para baixo sobre tanque de raias — lindo e emocionante</span></div></div>
+        <div class="pm-item"><div class="pm-icon">❄️</div><div><strong>Ice Breaker</strong><span>Coaster com lançamento frente e verso — spike vertical no final é de encher os olhos</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌊</div><div><strong>Infinity Falls</strong><span>Rafting em corredeira — prepare-se para ficar molhado! Alt. mínima 107cm</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎪 Shows & Animais</h4>
+        <div class="pm-item"><div class="pm-icon">🐋</div><div><strong>Orca Encounter</strong><span>Apresentação educativa sobre orcas — impressionante de perto</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐬</div><div><strong>Dolphin Days</strong><span>Show com golfinhos — checar horários no app do SeaWorld</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐧</div><div><strong>Antarctica: Empire of the Penguin</strong><span>Área com pinguins reais em habitat refrigerado — delicioso no calor de Orlando!</span></div></div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- SeaWorld -->
-  <div class="park-card">
-    <div class="park-banner" style="background:linear-gradient(135deg,#006064 0%,#0277bd 50%,#1a237e 100%);min-height:160px">
-      <div class="park-banner-bg">🐋🦈🐬🐠</div>
-      <div class="park-banner-content">
-        <div class="pb-date">TER · 09 FEV + DOM · 14 FEV</div>
-        <h3>🌊 SeaWorld Orlando</h3>
-      </div>
+<!-- Universal Studios + Mardi Gras -->
+<div class="park-modal" id="modal-usg" onclick="if(event.target===this)closePark()">
+  <div class="pm-inner">
+    <div class="pm-header" style="background:linear-gradient(135deg,#4a0080 0%,#c45c00 55%,#1b5e20 100%)">
+      <button class="pm-close" onclick="closePark()">✕</button>
+      <div class="pm-hdate">QUA · 10 FEV 2027</div>
+      <div class="pm-htitle">🎭 Universal Studios + Mardi Gras</div>
+      <div class="pm-hsub">Diagon Alley, Transformers e o carnaval americano!</div>
     </div>
-    <div class="park-body">
-      <div class="park-attrs">
-        <div class="park-attr">🦈 <strong>Mako</strong> — a mais rápida da Flórida</div>
-        <div class="park-attr">🐟 <strong>Manta</strong> — flying coaster sobre tanque de raias</div>
-        <div class="park-attr">🐬 <strong>Shows</strong> — checar horários no app</div>
-        <div class="park-attr">🎟️ Confirmar se ingresso inclui 2ª visita gratuita</div>
+    <div class="pm-body">
+      <div class="pm-ll">
+        <div class="pm-ll-hd">🎟️ Universal Express Pass</div>
+        <div class="pm-item"><div class="pm-icon">🎟️</div><div><strong>Express Pass muito válido aqui!</strong><span>Pula a fila de Gringotts, Mummy, Transformers e mais. Comprar online antecipado</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎺</div><div><strong>Desfile Mardi Gras ~19h</strong><span>NÃO PERDER — carros alegóricos, músicos ao vivo e lançamento de colliers coloridos do alto</span></div></div>
       </div>
-      <div class="park-tags">
-        <span class="tag">🦈 Mako = prioridade</span><span class="tag">⚠️ Confirmar 2ª visita</span>
+      <div class="pm-kids">
+        <div class="pm-kids-hd">👧👧 Para Bia e Duda (11 anos)</div>
+        <div class="pm-item"><div class="pm-icon">💛</div><div><strong>Minion Land</strong><span>Área nova dos Minions — Despicable Me: Minion Mayhem e foto com personagens!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🍩</div><div><strong>Springfield: Home of the Simpsons</strong><span>Simpsons Ride + comer no Krusty Burger — diversão total com a família</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐲</div><div><strong>Dragão do Gringotts cuspindo fogo</strong><span>O dragão cospe fogo real do alto da fachada — esperar o momento e gravar!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎯 Estratégia do Dia</h4>
+        <div class="pm-item"><div class="pm-icon">🧙</div><div><strong>Diagon Alley de manhã</strong><span>Gringotts tem fila menor cedo. Explorar toda a área de Harry Potter antes das multidões</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎺</div><div><strong>Posicionar para Mardi Gras a partir das 17h</strong><span>Escolher lado com boa visão na Universal Ave para garantir lugar no desfile das 19h</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎵</div><div><strong>Show musical após o desfile</strong><span>Artistas ao vivo no palco da lagoa — não sair logo após o desfile!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎡 Top Atrações</h4>
+        <div class="pm-item"><div class="pm-icon">🐲</div><div><strong>Harry Potter &amp; the Escape from Gringotts</strong><span>Coaster/simulador 4D no banco dos bruxos — épico e muito divertido</span></div></div>
+        <div class="pm-item"><div class="pm-icon">💀</div><div><strong>Revenge of the Mummy</strong><span>Coaster no escuro com surpresas e calor — clássico assustador de verdade!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🤖</div><div><strong>Transformers: The Ride 3D</strong><span>Batalha épica com Optimus Prime em simulador 3D de alta tecnologia</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎢</div><div><strong>Hollywood Rip Ride Rockit</strong><span>Coaster vertical de 17 andares — escolha sua música para a trilha da descida!</span></div></div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Universal Studios + Mardi Gras -->
-  <div class="park-card">
-    <div class="park-banner" style="background:linear-gradient(135deg,#4a0080 0%,#c45c00 50%,#1b5e20 100%);min-height:160px">
-      <div class="park-banner-bg">🎭🎺🧙🎉</div>
-      <div class="park-banner-content">
-        <div class="pb-date">QUA · 10 FEV</div>
-        <h3>🎭 Universal Studios + Mardi Gras</h3>
-      </div>
+<!-- Hollywood Studios -->
+<div class="park-modal" id="modal-hs" onclick="if(event.target===this)closePark()">
+  <div class="pm-inner">
+    <div class="pm-header" style="background:linear-gradient(135deg,#0d1b4a 0%,#1a237e 40%,#7b1fa2 100%)">
+      <button class="pm-close" onclick="closePark()">✕</button>
+      <div class="pm-hdate">QUI · 11 FEV 2027</div>
+      <div class="pm-htitle">⭐ Hollywood Studios</div>
+      <div class="pm-hsub">Star Wars, Toy Story e o show mais épico da Disney</div>
     </div>
-    <div class="park-body">
-      <div class="park-attrs">
-        <div class="park-attr">🧙 <strong>Diagon Alley</strong> — HP: Escape from Gringotts</div>
-        <div class="park-attr">💀 <strong>Revenge of the Mummy</strong> — clássico assustador</div>
-        <div class="park-attr">🎺 <strong>Desfile Mardi Gras</strong> — à noite, não perder!</div>
-        <div class="park-attr">🎵 <strong>Show musical</strong> — artistas no palco após o desfile</div>
+    <div class="pm-body">
+      <div class="pm-ll">
+        <div class="pm-ll-hd">⚡ Lightning Lane — Prioridades</div>
+        <div class="pm-item"><div class="pm-icon">🚀</div><div><strong>Rise of the Resistance</strong><span>LL Individual ~US$22 · Reserve às 7h no app (antes de entrar) · A atração mais concorrida da Disney — sem LL espera 2h+</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐶</div><div><strong>Slinky Dog Dash</strong><span>LL Multi · Favorita das crianças no Toy Story Land — fila esgota rápido</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🗼</div><div><strong>Tower of Terror</strong><span>LL Multi · Vale muito nos horários de pico (11h–16h)</span></div></div>
       </div>
-      <div class="park-tags">
-        <span class="tag">🎭 Mardi Gras à noite</span><span class="tag">🧙 Cerveja de Manteiga</span>
+      <div class="pm-kids">
+        <div class="pm-kids-hd">👧👧 Para Bia e Duda (11 anos)</div>
+        <div class="pm-item"><div class="pm-icon">🐶</div><div><strong>Toy Story Land completo</strong><span>Slinky Dog Dash, Alien Swirling Saucers e Toy Story Mania — área incrível para as gêmeas!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌌</div><div><strong>Millennium Falcon: Smugglers Run</strong><span>Pilotar a nave de Han Solo em equipe — piloto, artilheiro e engenheiro. Adrenalina total!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎆</div><div><strong>Fantasmic!</strong><span>Mickey domina o sonho com jatos d'água, fogo e projeções — sentar cedo para bom lugar</span></div></div>
       </div>
+      <div class="pm-section">
+        <h4>🎯 Estratégia do Dia</h4>
+        <div class="pm-item"><div class="pm-icon">📱</div><div><strong>7h: abrir o app Disney e comprar LL Rise</strong><span>Fazer isso antes mesmo de chegar ao parque — esgota em minutos!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🏃</div><div><strong>Se LL esgotou: ir direto para Rise ao abrir</strong><span>Fila standby logo na abertura pode ser só 30-45min enquanto outros estão no café</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌙</div><div><strong>Chegar cedo ao anfiteatro do Fantasmic!</strong><span>Reservar lugar 30-45min antes — show lotado sempre</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎡 Top Atrações</h4>
+        <div class="pm-item"><div class="pm-icon">🚀</div><div><strong>Star Wars: Rise of the Resistance</strong><span>A MELHOR atração da Disney no mundo — captura por Stormtroopers e fuga de um Destroyer Estelar</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌌</div><div><strong>Millennium Falcon: Smugglers Run</strong><span>Missão interativa dentro do Falcon — cada pessoa tem uma função diferente</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🗼</div><div><strong>The Twilight Zone Tower of Terror</strong><span>Queda livre de 13 andares aleatória — coração na garganta garantido</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎸</div><div><strong>Rock 'n' Roller Coaster</strong><span>De 0 a 100km/h em 2 segundos com Aerosmith — loopings no escuro!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎪 Shows Imperdíveis</h4>
+        <div class="pm-item"><div class="pm-icon">🎆</div><div><strong>Fantasmic!</strong><span>Show de 30min com projeções na água, dragão cuspindo fogo e Mickey em batalha épica</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎬</div><div><strong>Indiana Jones Stunt Spectacular</strong><span>Cenas de ação ao vivo com explosões reais — impressionante e muito divertido!</span></div></div>
+      </div>
+      <a class="pm-link" href="https://www.vaipradisney.com/disney/parques/hollywood-studios/" target="_blank">⭐ Mais dicas no VaiPraDisney →</a>
     </div>
   </div>
+</div>
 
-  <!-- Hollywood Studios -->
-  <div class="park-card">
-    <div class="park-banner" style="background:linear-gradient(135deg,#0d1b4a 0%,#1a237e 40%,#7b1fa2 100%);min-height:160px">
-      <div class="park-banner-bg">⭐🚀🎬🗼</div>
-      <div class="park-banner-content">
-        <div class="pb-date">QUI · 11 FEV</div>
-        <h3>⭐ Disney's Hollywood Studios</h3>
-      </div>
+<!-- EPCOT -->
+<div class="park-modal" id="modal-ep" onclick="if(event.target===this)closePark()">
+  <div class="pm-inner">
+    <div class="pm-header" style="background:linear-gradient(135deg,#1565c0 0%,#00695c 50%,#e65100 100%)">
+      <button class="pm-close" onclick="closePark()">✕</button>
+      <div class="pm-hdate">SEX · 12 FEV 2027</div>
+      <div class="pm-htitle">🌎 EPCOT</div>
+      <div class="pm-hsub">Tecnologia, culinária mundial e o Pavilhão do Brasil!</div>
     </div>
-    <div class="park-body">
-      <div class="park-attrs">
-        <div class="park-attr">🚀 <strong>Rise of the Resistance</strong> — melhor atração da Disney</div>
-        <div class="park-attr">🛸 <strong>Millennium Falcon</strong> — pilotar a nave!</div>
-        <div class="park-attr">🗼 <strong>Tower of Terror</strong> — emoção garantida</div>
-        <div class="park-attr">🎆 <strong>Fantasmic!</strong> — show à noite com água e fogo</div>
+    <div class="pm-body">
+      <div class="pm-ll">
+        <div class="pm-ll-hd">⚡ Lightning Lane — Prioridades</div>
+        <div class="pm-item"><div class="pm-icon">🚀</div><div><strong>Guardians of the Galaxy: Cosmic Rewind</strong><span>LL Individual ~US$22 OU Virtual Queue gratuito (às 7h e 13h no app) · Coaster que gira 360° — épico!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐭</div><div><strong>Remy's Ratatouille Adventure</strong><span>LL Multi · Muito popular com famílias — filas longas no horário de pico</span></div></div>
+        <div class="pm-item"><div class="pm-icon">❄️</div><div><strong>Frozen Ever After</strong><span>LL Multi · As meninas vão cantar junto com a atração toda!</span></div></div>
       </div>
-      <div class="park-tags">
-        <span class="tag">🚀 Rise = prioridade #1</span><span class="tag">🎆 Fantasmic! noturno</span>
+      <div class="pm-kids">
+        <div class="pm-kids-hd">👧👧 Para Bia e Duda (11 anos)</div>
+        <div class="pm-item"><div class="pm-icon">🐭</div><div><strong>Remy's Ratatouille Adventure</strong><span>Viagem pelo restaurante Gusteau no tamanho de um rato — encantador para todas as idades</span></div></div>
+        <div class="pm-item"><div class="pm-icon">❄️</div><div><strong>Frozen Ever After</strong><span>Passeio de bote pelo reino de Arendelle — impossível não cantar junto!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🇧🇷</div><div><strong>Pavilhão do Brasil</strong><span>Mostrar o Brasil para elas — artesanato, comida nacional e muito orgulho brasileiro!</span></div></div>
       </div>
+      <div class="pm-section">
+        <h4>🎯 Estratégia do Dia</h4>
+        <div class="pm-item"><div class="pm-icon">📱</div><div><strong>7h: Virtual Queue ou LL para Guardians</strong><span>Tentar VQ gratuito primeiro — se não pegar, comprar LL Individual. Fazer antes de entrar no parque</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌍</div><div><strong>World Showcase a partir do meio dia</strong><span>Pavilhões abrem ao meio dia — ideal explorar à tarde com restaurantes abertos para jantar</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎆</div><div><strong>Posicionar para Luminous cedo</strong><span>Show de fogos no lago — ficar no World Showcase Lagoon. Lado do Brasil tem vista incrível!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎡 Top Atrações</h4>
+        <div class="pm-item"><div class="pm-icon">🚀</div><div><strong>Guardians of the Galaxy: Cosmic Rewind</strong><span>Coaster indoor que roda para todos os lados com trilha sonora dos Guardiões — épico!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌍</div><div><strong>Soarin' Around the World</strong><span>Voo simulado pelo mundo inteiro — cheiro de flores e vento real enquanto você voa</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🚗</div><div><strong>Test Track</strong><span>Projetar e testar um carro virtual em velocidade — ótima para todo o grupo!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐭</div><div><strong>Remy's Ratatouille Adventure</strong><span>Encolher até o tamanho de um rato no restaurante Gusteau — encantador!</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🇧🇷 World Showcase — Destaques</h4>
+        <div class="pm-item"><div class="pm-icon">🇧🇷</div><div><strong>Pavilhão do Brasil</strong><span>Artesanato nacional, comida brasileira — foto obrigatória com a família representando o Brasil!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🇯🇵</div><div><strong>Japão</strong><span>Sushi, loja incrível de produtos japoneses e shows de taiko drum</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🇫🇷</div><div><strong>França</strong><span>Remy's Ratatouille, crêpes deliciosos e Impressionist Art Gallery</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🇲🇽</div><div><strong>México</strong><span>Pirâmide com La Cava del Tequila e Gran Fiesta Tour — lindo à noite</span></div></div>
+      </div>
+      <div class="pm-section">
+        <h4>🎪 Festival &amp; Shows</h4>
+        <div class="pm-item"><div class="pm-icon">🎨</div><div><strong>Festival of the Arts (jan–fev)</strong><span>Exposições interativas, food studios com pratos artísticos e shows de Disney on Broadway</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎆</div><div><strong>Luminous The Symphony of Us</strong><span>Fogos, luzes e lasers no World Showcase Lagoon — encerramento perfeito do dia</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🏀</div><div><strong>NBA: Magic vs Miami Heat — 19h</strong><span>Kia Center · Saindo cedo do EPCOT, dá para assistir ao vivo! Ver detalhes no roteiro</span></div></div>
+      </div>
+      <a class="pm-link" href="https://www.vaipradisney.com/disney/parques/epcot/" target="_blank">🌎 Mais dicas no VaiPraDisney →</a>
     </div>
   </div>
+</div>
 
-  <!-- EPCOT -->
-  <div class="park-card">
-    <div class="park-banner" style="background:linear-gradient(135deg,#1565c0 0%,#00695c 50%,#e65100 100%);min-height:160px">
-      <div class="park-banner-bg">🌎🚀🇧🇷🎆</div>
-      <div class="park-banner-content">
-        <div class="pb-date">SEX · 12 FEV</div>
-        <h3>🌎 EPCOT</h3>
-      </div>
+<!-- Magic Kingdom -->
+<div class="park-modal" id="modal-mk" onclick="if(event.target===this)closePark()">
+  <div class="pm-inner">
+    <div class="pm-header" style="background:linear-gradient(135deg,#1a237e 0%,#c62828 35%,#880e4f 100%)">
+      <button class="pm-close" onclick="closePark()">✕</button>
+      <div class="pm-hdate">TER · 16 FEV 2027 · GRANDE ENCERRAMENTO 🎉</div>
+      <div class="pm-htitle">🏰 Magic Kingdom</div>
+      <div class="pm-hsub">O dia mais mágico — castelo, TRON e fogos de artifício!</div>
     </div>
-    <div class="park-body">
-      <div class="park-attrs">
-        <div class="park-attr">🚀 <strong>Guardians of the Galaxy</strong> — Cosmic Rewind, roller coaster épico</div>
-        <div class="park-attr">🇧🇷 <strong>World Showcase</strong> — visitar o pavilhão do Brasil!</div>
-        <div class="park-attr">🎨 <strong>Festival of the Arts</strong> — exposições e comida</div>
-        <div class="park-attr">🎆 <strong>Luminous</strong> — show de fogos no lago (se confirmado)</div>
+    <div class="pm-body">
+      <div class="pm-ll">
+        <div class="pm-ll-hd">⚡ Lightning Lane — Prioridades</div>
+        <div class="pm-item"><div class="pm-icon">⚡</div><div><strong>TRON Lightcycle Run</strong><span>LL Individual ~US$22 · Reserve às 7h — a novidade mais disputada do Magic Kingdom. Esgota em minutos!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">⛏️</div><div><strong>Seven Dwarfs Mine Train</strong><span>LL Multi · Favorita de todas as crianças — fila sempre grande mesmo fora do horário de pico</span></div></div>
+        <div class="pm-item"><div class="pm-icon">👻</div><div><strong>Haunted Mansion</strong><span>LL Multi · No pico a fila chega a 90min — vale a pena</span></div></div>
       </div>
-      <div class="park-tags">
-        <span class="tag">🚀 Guardians = prioridade</span><span class="tag">🌎 World Showcase</span><span class="tag">🎆 Luminous</span>
+      <div class="pm-kids">
+        <div class="pm-kids-hd">👧👧 Para Bia e Duda (11 anos)</div>
+        <div class="pm-item"><div class="pm-icon">👸</div><div><strong>Encontrar as Princesas</strong><span>Princess Fairytale Hall no Fantasyland — Cinderela, Rapunzel, Tiana · Reservar horário no app Disney</span></div></div>
+        <div class="pm-item"><div class="pm-icon">⛏️</div><div><strong>Seven Dwarfs Mine Train</strong><span>Carros que oscilam pelo trilho com os 7 anões em animatrônica linda — a favorita das famílias!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🐟</div><div><strong>Under the Sea — Little Mermaid</strong><span>Passeio pelo mundo de Ariel — delicado e muito bonito, geralmente sem fila grande</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎆</div><div><strong>Happily Ever After</strong><span>Fogos no Castelo da Cinderela — o melhor show da Disney. FICAR ATÉ O FIM!</span></div></div>
       </div>
-    </div>
-  </div>
-
-  <!-- Magic Kingdom -->
-  <div class="park-card">
-    <div class="park-banner" style="background:linear-gradient(135deg,#1a237e 0%,#c62828 35%,#880e4f 100%);min-height:180px">
-      <div class="park-banner-bg">🏰✨⚡🎆</div>
-      <div class="park-banner-content">
-        <div class="pb-date">TER · 16 FEV · GRANDE ENCERRAMENTO</div>
-        <h3>🏰 Magic Kingdom — O Dia da Magia!</h3>
+      <div class="pm-section">
+        <h4>🎯 Estratégia do Dia</h4>
+        <div class="pm-item"><div class="pm-icon">📱</div><div><strong>7h: comprar LL Individual TRON</strong><span>Ter o app Disney pronto, cartão cadastrado e dedo no gatilho — esgota em minutos!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">📸</div><div><strong>Foto de entrada na Main Street</strong><span>O Castelo ao fundo, família reunida — essa é a foto da viagem! Ir cedo para menos gente</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎉</div><div><strong>Dia de encerramento — celebrar!</strong><span>Último dia na Disney. Guardar tempo para souvenires na Main Street antes do parque fechar</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🌙</div><div><strong>FICAR ATÉ OS FOGOS</strong><span>Happily Ever After começa ~21h. Posicionar no Hub (frente ao castelo) 30min antes</span></div></div>
       </div>
-    </div>
-    <div class="park-body">
-      <div class="park-attrs">
-        <div class="park-attr">⚡ <strong>TRON Lightcycle Run</strong> — novidade! Prioridade máxima</div>
-        <div class="park-attr">🎡 <strong>Seven Dwarfs Mine Train</strong> — perfeito para Bia e Duda</div>
-        <div class="park-attr">🏴‍☠️ <strong>Pirates of the Caribbean</strong> — clássico para toda a família</div>
-        <div class="park-attr">🎆 <strong>Happily Ever After</strong> — fogos de artifício no Castelo!</div>
+      <div class="pm-section">
+        <h4>🎡 Top Atrações</h4>
+        <div class="pm-item"><div class="pm-icon">⚡</div><div><strong>TRON Lightcycle Run</strong><span>Coaster mais rápido do Magic Kingdom — sensação de entrar no mundo digital num lightcycle!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">⛏️</div><div><strong>Seven Dwarfs Mine Train</strong><span>O favorito das famílias — carros oscilantes com os 7 anões em animatrônica incrível</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🏴‍☠️</div><div><strong>Pirates of the Caribbean</strong><span>Clássico intemporal com Jack Sparrow — família toda adora, sem fila grande cedo</span></div></div>
+        <div class="pm-item"><div class="pm-icon">👻</div><div><strong>Haunted Mansion</strong><span>999 fantasmas alegres — clássico que toda geração ama</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🚀</div><div><strong>Space Mountain</strong><span>Coaster no escuro com estrelas — clássico inesquecível</span></div></div>
       </div>
-      <div class="park-tags">
-        <span class="tag">⚡ TRON = prioridade</span><span class="tag">🎆 Não sair antes dos fogos!</span><span class="tag">🕙 Ficar até o fim</span>
+      <div class="pm-section">
+        <h4>🎪 Shows &amp; Experiências</h4>
+        <div class="pm-item"><div class="pm-icon">🎆</div><div><strong>Happily Ever After</strong><span>20min de fogos com projeções no castelo — emoção garantida. Choro coletivo da família!</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎠</div><div><strong>Disney Festival of Fantasy Parade</strong><span>Todos os personagens pela Main Street — checar horário, geralmente 15h</span></div></div>
+        <div class="pm-item"><div class="pm-icon">🎵</div><div><strong>Mickey's PhilharMagic</strong><span>Cinema 3D musical com Donald Duck — perfeito para descansar no meio do dia</span></div></div>
       </div>
+      <div style="background:linear-gradient(135deg,rgba(218,165,32,.1),rgba(255,215,0,.07));border:1px solid rgba(218,165,32,.28);border-radius:10px;padding:11px 13px;margin-bottom:16px">
+        <div style="font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#b45309;margin-bottom:6px">✨ Último Dia — Momento Especial</div>
+        <div style="font-size:.82rem;color:var(--fg);line-height:1.5">O Magic Kingdom é o encerramento perfeito desta viagem incrível. Guardar energia para os fogos do Happily Ever After — é o beijo de despedida mágico da Disney! 🏰❤️</div>
+      </div>
+      <a class="pm-link" href="https://www.vaipradisney.com/disney/parques/magic-kingdom/" target="_blank">🏰 Mais dicas no VaiPraDisney →</a>
     </div>
   </div>
 </div>
@@ -1436,4 +1734,14 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
   }
   tick(); setInterval(tick,1000);
 })();
+// Park modals
+function openPark(id){
+  var m=document.getElementById('modal-'+id);
+  if(m){m.classList.add('open');document.body.style.overflow='hidden';}
+}
+function closePark(){
+  document.querySelectorAll('.park-modal.open').forEach(function(m){m.classList.remove('open');});
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closePark();});
 </script>
