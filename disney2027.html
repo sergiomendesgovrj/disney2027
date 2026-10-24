@@ -1180,8 +1180,8 @@ table.bt{width:100%;border-collapse:collapse;min-width:480px}
     if(diff <= 0){ document.getElementById('cd').innerHTML='<div style="color:#fbbf24;font-family:Montserrat,sans-serif;font-weight:900;font-size:1.1rem">🎉 A viagem começou!</div>'; return; }
     var n=new Date(now), t=new Date(target);
     var mo=(t.getFullYear()-n.getFullYear())*12+(t.getMonth()-n.getMonth());
-    var base=new Date(n.getFullYear(),n.getMonth()+mo,n.getDate(),n.getHours());
-    if(base>t){mo--;base=new Date(n.getFullYear(),n.getMonth()+mo,n.getDate(),n.getHours());}
+    var base=new Date(n.getFullYear(),n.getMonth()+mo,n.getDate(),n.getHours(),n.getMinutes(),n.getSeconds(),n.getMilliseconds());
+    if(base>t){mo--;base=new Date(n.getFullYear(),n.getMonth()+mo,n.getDate(),n.getHours(),n.getMinutes(),n.getSeconds(),n.getMilliseconds());}
     var remDiff=t-base, d=Math.floor(remDiff/864e5), h=Math.floor((remDiff%864e5)/36e5), m=Math.floor((remDiff%36e5)/6e4), s=Math.floor((remDiff%6e4)/1e3);
     document.getElementById('cd-mo').textContent=mo;
     document.getElementById('cd-d').textContent=d;
