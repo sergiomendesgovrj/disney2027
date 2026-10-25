@@ -8,24 +8,31 @@
 <style>
 /* ── TOKENS ──────────────────────────────────────────── */
 :root {
-  --navy: #0d1b3e;
-  --navy2: #162448;
-  --navy3: #1e2f57;
-  --lavender: #8b7fd4;
-  --lavender2: #a99de8;
-  --lavender3: #c8c0f5;
-  --gold: #d4a843;
+  /* ── Mané-inspired palette ─────────────────────── */
+  --navy: #034c46;      /* teal dark */
+  --navy2: #0a6b62;
+  --navy3: #156e65;
+  --teal: #034c46;
+  --teal2: #0a6b62;
+  --teal3: #52a69e;
+  --terra: #c8624a;     /* terracotta — em/italic accent */
+  --terra2: #d4734f;
+  --terra3: #e09070;
+  --lavender: #034c46;  /* redirect to teal */
+  --lavender2: #52a69e;
+  --lavender3: #8fccc8;
+  --gold: #d4a843;      /* kept for countdown / star accents */
   --gold2: #e8c06a;
   --gold3: #f5d98a;
-  --cream: #faf8f4;
-  --cream2: #f0ede6;
+  --cream: #faf4ec;     /* warm Mané cream */
+  --cream2: #f0e7db;
   --white: #ffffff;
-  --fg: #1a1a2e;
-  --fg2: #3d3d5c;
-  --fg3: #6b6b8a;
+  --fg: #1a1510;
+  --fg2: #3d3028;
+  --fg3: #7a6f65;
   --bg: var(--cream);
-  --card-bg: var(--white);
-  --card-border: rgba(139,127,212,0.15);
+  --card-bg: #ffffff;
+  --card-border: rgba(0,0,0,0.08);
   --shadow: 0 4px 24px rgba(13,27,62,0.08);
   --shadow-lg: 0 12px 48px rgba(13,27,62,0.14);
   --radius: 16px;
@@ -80,10 +87,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;justify-content:space-between;transition:background 0.3s,backdrop-filter 0.3s}
 .nav.scrolled{background:rgba(13,27,62,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);opacity:0.9;letter-spacing:0.02em}
-.nav-logo span{color:var(--gold2)}
+.nav-logo span{color:var(--terra)}
 .nav-links{display:flex;gap:20px;align-items:center}
 .nav-links a{color:rgba(255,255,255,0.8);font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
-.nav-links a:hover{color:var(--gold2)}
+.nav-links a:hover{color:var(--terra)}
 @media(max-width:640px){.nav-links{gap:12px}.nav-links a:not(:last-child){display:none}}
 
 /* ── HERO ─────────────────────────────────────────────── */
@@ -117,9 +124,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 /* ── SECTIONS ─────────────────────────────────────────── */
 .section{padding:80px max(20px,env(safe-area-inset-right,0px));max-width:1100px;margin:0 auto}
 .section-sm{padding:60px max(20px,env(safe-area-inset-right,0px));max-width:1100px;margin:0 auto}
-.sec-label{font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--lavender);margin-bottom:12px}
+.sec-label{display:inline-block;font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);background:rgba(3,76,70,0.07);border:1px solid rgba(3,76,70,0.18);border-radius:50px;padding:4px 14px;margin-bottom:14px}.sec-label::before{content:"• ";color:var(--terra)}
 .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--fg);line-height:1.2;text-wrap:balance;margin-bottom:8px}
-.sec-title em{font-style:italic;color:var(--lavender)}
+.sec-title em{font-style:italic;color:var(--terra)}
 .sec-sub{font-size:1rem;color:var(--fg2);max-width:520px;margin-bottom:48px}
 .divider{width:100%;max-width:1100px;margin:0 auto;height:1px;background:linear-gradient(to right,transparent,var(--card-border),transparent)}
 
@@ -216,23 +223,41 @@ details[open] .tl-chevron{transform:rotate(180deg)}
 .hotel-price{margin-top:12px;font-size:0.9rem;font-weight:700;color:var(--gold2)}
 
 /* ── ORÇAMENTO ────────────────────────────────────────── */
-.budget-table{width:100%;border-collapse:collapse;font-size:0.88rem}
-.budget-table th{text-align:left;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg3);padding:8px 12px;border-bottom:1px solid var(--card-border)}
-.budget-table td{padding:12px;border-bottom:1px solid var(--card-border);color:var(--fg2)}
+.budget-table{width:100%;border-collapse:collapse;font-size:0.85rem;min-width:520px}
+/* ── BUDGET V31 ─────────────────────────────────────── */
+.budget-table th{text-align:left;font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg3);padding:10px 12px;border-bottom:2px solid var(--card-border)}
+.budget-table td{padding:11px 12px;border-bottom:1px solid var(--card-border);color:var(--fg2);vertical-align:middle}
 .budget-table tr:last-child td{border-bottom:none}
-.budget-table .status{font-size:0.7rem;font-weight:700;padding:3px 8px;border-radius:12px;white-space:nowrap}
-.status-ok{background:rgba(3,76,70,0.2);color:var(--teal3)}
-.status-pending{background:rgba(255,200,50,0.15);color:#f5c842}
-.status-buy{background:rgba(255,80,80,0.15);color:#ff7878}
-.budget-total{background:linear-gradient(135deg,var(--navy2),var(--navy3));border-radius:var(--radius-sm);padding:20px 24px;margin-top:16px}
-.budget-total-label{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:6px}
-.budget-total-value{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold3)}
+.bcat{font-size:0.62rem;font-weight:700;padding:3px 8px;border-radius:10px;white-space:nowrap;letter-spacing:0.04em}
+.bcat-voo{background:rgba(100,140,255,0.12);color:#5580e8}
+.bcat-cruzeiro{background:rgba(80,160,220,0.12);color:#3a8ec8}
+.bcat-hotel{background:rgba(100,180,130,0.12);color:#2a8a50}
+.bcat-car{background:rgba(150,120,200,0.12);color:#7855c0}
+.bcat-seg{background:rgba(200,98,74,0.12);color:var(--terra)}
+.bcat-parque{background:rgba(212,168,67,0.12);color:#a07820}
+.bcat-ll{background:rgba(3,76,70,0.1);color:var(--teal)}
+.bcat-express{background:rgba(200,98,74,0.1);color:var(--terra)}
+.budget-group-row td{font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--terra);background:rgba(200,98,74,0.04);padding:10px 12px;border-top:2px solid rgba(200,98,74,0.15)}
+.budget-totals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.budget-total{border-radius:var(--radius-sm);padding:18px 20px}
+.btotal-done{background:rgba(3,76,70,0.07);border:1px solid rgba(3,76,70,0.15)}
+.btotal-parks{background:rgba(212,168,67,0.07);border:1px solid rgba(212,168,67,0.2)}
+.btotal-range{background:rgba(200,98,74,0.06);border:1px solid rgba(200,98,74,0.15)}
+.budget-total-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg3);margin-bottom:6px}
+.budget-total-value{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--fg);line-height:1.1}
+.btotal-done .budget-total-value{color:var(--teal)}
+.btotal-parks .budget-total-value{color:#a07820}
+.btotal-sub{font-size:0.72rem;color:var(--fg3);margin-top:4px}
+.status-ok{background:rgba(3,76,70,0.1);color:var(--teal2)}
+.status-pending{background:rgba(212,168,67,0.15);color:#a07820}
+.status-buy{background:rgba(200,98,74,0.1);color:var(--terra)}
+
 
 /* ── REFINAMENTOS DE ESTILO (V30) ──────────────────────── */
 /* Teal Mané-inspired accent */
 :root{--teal:#034c46;--teal2:#0a6b62;--teal3:#52a69e}
 [data-theme="dark"]{--teal:#0a6b62;--teal2:#52a69e;--teal3:#7fccc6}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--teal:#0a6b62;--teal2:#52a69e;--teal3:#7fccc6}}
+
 
 /* Eyebrow bullet — Mané style */
 .sec-label::before{content:"• ";color:var(--gold)}
@@ -263,7 +288,7 @@ details[open] .tl-chevron{transform:rotate(180deg)}
 .wa-input-box{flex:1;background:rgba(255,255,255,0.06);border-radius:20px;padding:8px 14px;font-size:0.78rem;color:rgba(255,255,255,0.3)}
 .wa-send{width:34px;height:34px;border-radius:50%;background:var(--teal2);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
 
-/* ── ORÇAMENTO PARQUES ─────────────────────────────────── */
+
 .parks-budget-header{margin-top:56px;padding-top:40px;border-top:1px solid var(--card-border)}
 .parks-budget-header .sec-label{color:var(--gold)}
 .scenario-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:24px 0}
@@ -1065,295 +1090,148 @@ details[open] .tl-chevron{transform:rotate(180deg)}
 <div class="divider"></div>
 <div class="section" id="orcamento">
   <div class="sec-label">Orçamento</div>
-  <h2 class="sec-title">O que está <em>confirmado</em></h2>
-  <p class="sec-sub">Controle financeiro da viagem — o que já foi pago e o que ainda precisa de ação.</p>
+  <h2 class="sec-title">Tudo em um só <em>lugar</em></h2>
+  <p class="sec-sub">O que já está pago, o que precisa confirmar e o que ainda falta comprar — com as estimativas de parques incluídas.</p>
+
   <div class="reveal" style="overflow-x:auto">
     <table class="budget-table">
       <thead>
         <tr>
+          <th>Categoria</th>
           <th>Item</th>
           <th>Valor</th>
           <th>Status</th>
         </tr>
       </thead>
       <tbody>
+        <!-- ── CONFIRMADOS ── -->
         <tr>
-          <td><strong>Avianca GIG↔MIA via BOG</strong><br><span style="font-size:0.78rem;color:var(--fg3)">Código A2LM59</span></td>
+          <td><span class="bcat bcat-voo">✈️ Voos</span></td>
+          <td><strong>Avianca GIG↔MIA via BOG</strong><br><span style="font-size:0.78rem;color:var(--fg3)">Código A2LM59 · ida e volta para 6 pax</span></td>
           <td>R$ 21.299,07</td>
           <td><span class="status status-ok">✅ Pago</span></td>
         </tr>
         <tr>
-          <td><strong>Royal Caribbean 4 noites</strong><br><span style="font-size:0.78rem;color:var(--fg3)">Reserva #2946347</span></td>
+          <td><span class="bcat bcat-cruzeiro">🚢 Cruzeiro</span></td>
+          <td><strong>Royal Caribbean — 4 noites</strong><br><span style="font-size:0.78rem;color:var(--fg3)">Reserva #2946347</span></td>
           <td>R$ 10.965,92</td>
           <td><span class="status status-ok">✅ Pago</span></td>
         </tr>
         <tr>
-          <td><strong>Celebration Suites — 11 noites</strong><br><span style="font-size:0.78rem;color:var(--fg3)">05–16 Fevereiro</span></td>
+          <td><span class="bcat bcat-hotel">🏠 Hospedagem</span></td>
+          <td><strong>Celebration Suites — 11 noites</strong><br><span style="font-size:0.78rem;color:var(--fg3)">05 a 16 de fevereiro</span></td>
           <td>US$ 1.966,96</td>
           <td><span class="status status-pending">⏳ Confirmar</span></td>
         </tr>
+        <!-- ── A COMPRAR — LOGÍSTICA ── -->
         <tr>
+          <td><span class="bcat bcat-voo">✈️ Voos</span></td>
           <td><strong>Voos BSB↔GIG domésticos</strong></td>
           <td>—</td>
-          <td><span class="status status-buy">❌ Comprar</span></td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
+          <td><span class="bcat bcat-hotel">🏨 Hotel</span></td>
           <td><strong>Hotel Miami — ida (31 jan)</strong></td>
           <td>~US$ 150</td>
-          <td><span class="status status-buy">❌ Reservar</span></td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><strong>Hotel Miami — volta (16 fev)</strong><br><span style="font-size:0.78rem;color:#ff7878">⚠️ Crítico — voo às 07h</span></td>
+          <td><span class="bcat bcat-hotel">🏨 Hotel</span></td>
+          <td><strong>Hotel Miami — volta (16 fev)</strong><br><span style="font-size:0.78rem;color:#d45c3a">⚠️ Crítico — voo às 07h</span></td>
           <td>~US$ 130</td>
-          <td><span class="status status-buy">❌ Reservar</span></td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><strong>Ingressos Disney (6+ dias)</strong></td>
+          <td><span class="bcat bcat-car">🚗 Transporte</span></td>
+          <td><strong>Carro alugado Porto → MIA</strong></td>
           <td>—</td>
-          <td><span class="status status-buy">❌ Comprar</span></td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><strong>Ingressos Universal (2 dias)</strong></td>
-          <td>—</td>
-          <td><span class="status status-buy">❌ Comprar</span></td>
-        </tr>
-        <tr>
-          <td><strong>Ingressos SeaWorld (2 visitas)</strong></td>
-          <td>—</td>
-          <td><span class="status status-buy">❌ Comprar</span></td>
-        </tr>
-        <tr>
-          <td><strong>Carro Porto Miami → MIA</strong></td>
-          <td>—</td>
-          <td><span class="status status-buy">❌ Reservar</span></td>
-        </tr>
-        <tr>
+          <td><span class="bcat bcat-seg">🛡️ Seguro</span></td>
           <td><strong>Seguro Viagem</strong></td>
           <td>—</td>
-          <td><span class="status status-buy">❌ Contratar</span></td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="budget-total reveal">
-    <div class="budget-total-label">Viagem e logística — total confirmado</div>
-    <div class="budget-total-value">R$ 32.264,99 + US$ 1.966,96</div>
-  </div>
-
-  <!-- PARQUES & PASSES -->
-  <div class="parks-budget-header reveal">
-    <div class="sec-label">Parques &amp; Passes</div>
-    <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;margin-bottom:8px;color:var(--fg)">Estimativa de <em style="font-style:italic;color:var(--gold2)">ingressos e fura-filas</em></h3>
-    <p class="sec-sub" style="margin-bottom:0">Premissas de planejamento — confirmar preços exatos para as datas de fevereiro 2027 antes de comprar.</p>
-  </div>
-
-  <!-- CENÁRIOS -->
-  <div class="scenario-grid reveal">
-    <div class="scenario-card sc-low">
-      <div class="sc-badge">Cenário Econômico</div>
-      <div class="sc-value">R$ 50.421</div>
-      <div class="sc-usd">US$ 8.846 com imposto</div>
-      <div class="sc-pp">R$ 8.404 por pessoa</div>
-      <div class="sc-note">Sem Universal Express Pass</div>
-    </div>
-    <div class="scenario-card sc-mid">
-      <div class="sc-badge">Estimativa Base</div>
-      <div class="sc-value">R$ 59.345</div>
-      <div class="sc-usd">US$ 10.411 com imposto</div>
-      <div class="sc-pp">R$ 9.891 por pessoa</div>
-      <div class="sc-note">Premissas centrais da planilha</div>
-    </div>
-    <div class="scenario-card sc-high">
-      <div class="sc-badge">Cenário Completo</div>
-      <div class="sc-value">R$ 71.728</div>
-      <div class="sc-usd">US$ 12.584 com imposto</div>
-      <div class="sc-pp">R$ 11.955 por pessoa</div>
-      <div class="sc-note">Express máximo · Quick Queue incluído</div>
-    </div>
-  </div>
-
-  <!-- DETALHAMENTO -->
-  <div class="reveal" style="overflow-x:auto;margin-top:4px">
-    <table class="parks-table">
-      <thead>
-        <tr>
-          <th>Categoria</th>
-          <th>Produto</th>
-          <th>Data(s)</th>
-          <th>Preço US$/pax</th>
-          <th>Total US$</th>
-          <th>Total R$</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="cat cat-ingresso">Ingresso</span></td>
-          <td><strong>Disney 4-Park Magic Ticket</strong><br><span class="opt">4 parques · 4 dias · confirmar eligibilidade</span></td>
-          <td>07, 11, 12 e 16/02</td>
-          <td>US$ 533,34</td>
-          <td>US$ 3.408,04</td>
-          <td>R$ 19.425,84</td>
+        <!-- ── A COMPRAR — PARQUES ── -->
+        <tr class="budget-group-row">
+          <td colspan="4">🎢 Parques &amp; Ingressos — estimativas (câmbio R$5,70 · imposto 6,5%)</td>
         </tr>
         <tr>
-          <td><span class="cat cat-ll">Lightning Lane</span></td>
-          <td><strong>Multi Pass — Animal Kingdom</strong></td>
-          <td>07/02</td>
-          <td>US$ 20 est.</td>
-          <td>US$ 127,80</td>
-          <td>R$ 728,46</td>
+          <td><span class="bcat bcat-parque">🏰 Disney</span></td>
+          <td><strong>4-Park Magic Ticket</strong><br><span style="font-size:0.78rem;color:var(--fg3)">4 parques · US$533,34/pax · preço oficial 2027</span></td>
+          <td>R$ 19.426 est.</td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><span class="cat cat-ll">Lightning Lane</span></td>
-          <td><strong>Single Pass — Avatar Flight of Passage</strong></td>
-          <td>07/02</td>
-          <td>US$ 20 est.</td>
-          <td>US$ 127,80</td>
-          <td>R$ 728,46</td>
+          <td><span class="bcat bcat-ll">⚡ LL Disney</span></td>
+          <td><strong>Lightning Lane — Animal Kingdom</strong><br><span style="font-size:0.78rem;color:var(--fg3)">Multi Pass + Avatar (07/02)</span></td>
+          <td>R$ 1.457 est.</td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><span class="cat cat-ingresso">Ingresso</span></td>
-          <td><strong>Universal 2 dias — Studios + IOA</strong><br><span class="opt">Confirmar Park-to-Park</span></td>
-          <td>08 e 10/02</td>
-          <td>US$ 320 est.</td>
-          <td>US$ 2.044,80</td>
-          <td>R$ 11.655,36</td>
+          <td><span class="bcat bcat-ll">⚡ LL Disney</span></td>
+          <td><strong>Lightning Lane — Hollywood Studios</strong><br><span style="font-size:0.78rem;color:var(--fg3)">Multi Pass + Rise of the Resistance (11/02)</span></td>
+          <td>R$ 1.821 est.</td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><span class="cat cat-express">Universal Express</span></td>
-          <td><strong>Express Pass — Islands of Adventure</strong><br><span class="opt">Faixa oficial US$119,99–319,99/dia</span></td>
-          <td>08/02</td>
-          <td>US$ 200 est.</td>
-          <td>US$ 1.278,00</td>
-          <td>R$ 7.284,60</td>
+          <td><span class="bcat bcat-ll">⚡ LL Disney</span></td>
+          <td><strong>Lightning Lane — EPCOT</strong><br><span style="font-size:0.78rem;color:var(--fg3)">Multi Pass + Guardians (12/02)</span></td>
+          <td>R$ 1.639 est.</td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><span class="cat cat-ingresso">Ingresso</span></td>
-          <td><strong>SeaWorld — 2 visitas</strong><br><span class="opt">US$106 total · confirmar regras de validade</span></td>
-          <td>09 e 14/02</td>
-          <td>US$ 106,00</td>
-          <td>US$ 677,34</td>
-          <td>R$ 3.860,84</td>
+          <td><span class="bcat bcat-ll">⚡ LL Disney</span></td>
+          <td><strong>Lightning Lane — Magic Kingdom</strong><br><span style="font-size:0.78rem;color:var(--fg3)">Multi Pass + TRON (16/02)</span></td>
+          <td>R$ 2.003 est.</td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><span class="cat cat-optional">Opcional</span></td>
-          <td><strong>SeaWorld Quick Queue — 1 dia</strong><br><span class="opt">Faixa oficial US$29,99–59,99</span></td>
-          <td>09/02</td>
-          <td>US$ 59,99 est.</td>
-          <td>US$ 383,34</td>
-          <td>R$ 2.185,02</td>
+          <td><span class="bcat bcat-parque">🎡 Universal</span></td>
+          <td><strong>Ingressos 2 dias — Studios + IOA</strong><br><span style="font-size:0.78rem;color:var(--fg3)">US$320 est./pax · confirmar Park-to-Park</span></td>
+          <td>R$ 11.655 est.</td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><span class="cat cat-express">Universal Express</span></td>
-          <td><strong>Express Pass — Universal Studios Florida</strong></td>
-          <td>10/02</td>
-          <td>US$ 200 est.</td>
-          <td>US$ 1.278,00</td>
-          <td>R$ 7.284,60</td>
+          <td><span class="bcat bcat-express">🚀 Express</span></td>
+          <td><strong>Universal Express Pass — 2 dias</strong><br><span style="font-size:0.78rem;color:var(--fg3)">IOA (08/02) + Studios (10/02) · US$200/pax est.</span></td>
+          <td>R$ 14.569 est.</td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
         <tr>
-          <td><span class="cat cat-ll">Lightning Lane</span></td>
-          <td><strong>Multi Pass — Hollywood Studios</strong></td>
-          <td>11/02</td>
-          <td>US$ 30 est.</td>
-          <td>US$ 191,70</td>
-          <td>R$ 1.092,69</td>
-        </tr>
-        <tr>
-          <td><span class="cat cat-ll">Lightning Lane</span></td>
-          <td><strong>Single Pass — Rise of the Resistance</strong></td>
-          <td>11/02</td>
-          <td>US$ 20 est.</td>
-          <td>US$ 127,80</td>
-          <td>R$ 728,46</td>
-        </tr>
-        <tr>
-          <td><span class="cat cat-ll">Lightning Lane</span></td>
-          <td><strong>Multi Pass — EPCOT</strong></td>
-          <td>12/02</td>
-          <td>US$ 25 est.</td>
-          <td>US$ 159,75</td>
-          <td>R$ 910,58</td>
-        </tr>
-        <tr>
-          <td><span class="cat cat-ll">Lightning Lane</span></td>
-          <td><strong>Single Pass — Guardians of the Galaxy</strong></td>
-          <td>12/02</td>
-          <td>US$ 20 est.</td>
-          <td>US$ 127,80</td>
-          <td>R$ 728,46</td>
-        </tr>
-        <tr>
-          <td><span class="cat cat-ll">Lightning Lane</span></td>
-          <td><strong>Multi Pass — Magic Kingdom</strong></td>
-          <td>16/02</td>
-          <td>US$ 35 est.</td>
-          <td>US$ 223,65</td>
-          <td>R$ 1.274,81</td>
-        </tr>
-        <tr>
-          <td><span class="cat cat-ll">Lightning Lane</span></td>
-          <td><strong>Single Pass — TRON Lightcycle / Run</strong></td>
-          <td>16/02</td>
-          <td>US$ 20 est.</td>
-          <td>US$ 127,80</td>
-          <td>R$ 728,46</td>
-        </tr>
-        <tr>
-          <td><span class="cat cat-optional">Opcional</span></td>
-          <td><strong>Single Pass — Seven Dwarfs Mine Train</strong></td>
-          <td>16/02</td>
-          <td>US$ 20 est.</td>
-          <td>US$ 127,80</td>
-          <td>R$ 728,46</td>
-        </tr>
-        <tr>
-          <td colspan="4"><strong>Total estimado (com imposto 6,5%)</strong></td>
-          <td><strong>US$ 10.411,42</strong></td>
-          <td><strong>R$ 59.345,09</strong></td>
+          <td><span class="bcat bcat-parque">🐬 SeaWorld</span></td>
+          <td><strong>Ingressos 2 visitas</strong><br><span style="font-size:0.78rem;color:var(--fg3)">09 e 14/02 · US$106 total oficial</span></td>
+          <td>R$ 3.861 est.</td>
+          <td><span class="status status-buy">🛒 A comprar</span></td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- PREMISSAS -->
-  <div class="premises-grid reveal">
-    <div class="premise-item">
-      <div class="premise-key">Câmbio de planejamento</div>
-      <div class="premise-val">R$ 5,70 / US$</div>
-      <div class="premise-note">Premissa editável — não é cotação ao vivo</div>
+  <!-- TOTAIS -->
+  <div class="budget-totals-grid reveal">
+    <div class="budget-total btotal-done">
+      <div class="budget-total-label">✅ Já pago</div>
+      <div class="budget-total-value">R$ 32.265</div>
+      <div class="btotal-sub">+ US$ 1.967 a confirmar</div>
     </div>
-    <div class="premise-item">
-      <div class="premise-key">Imposto estimado</div>
-      <div class="premise-val">6,5%</div>
-      <div class="premise-note">Confirmar no checkout de cada fornecedor</div>
+    <div class="budget-total btotal-parks">
+      <div class="budget-total-label">🛒 Parques (estimativa base)</div>
+      <div class="budget-total-value">R$ 59.345</div>
+      <div class="btotal-sub">US$ 10.411 · R$ 9.891/pessoa</div>
     </div>
-    <div class="premise-item">
-      <div class="premise-key">Viajantes</div>
-      <div class="premise-val">6 pessoas</div>
-      <div class="premise-note">4 adultos + 2 crianças de 11 anos (tarifa adulto)</div>
-    </div>
-    <div class="premise-item">
-      <div class="premise-key">Disney 4-Park Magic Ticket</div>
-      <div class="premise-val">US$ 533,34 / pax</div>
-      <div class="premise-note">Preço inicial oficial 2027 · antes de impostos</div>
-    </div>
-    <div class="premise-item">
-      <div class="premise-key">Universal Express</div>
-      <div class="premise-val">US$ 119,99–319,99</div>
-      <div class="premise-note">Faixa oficial por parque/dia · planilha usa US$200</div>
-    </div>
-    <div class="premise-item">
-      <div class="premise-key">Margem de segurança</div>
-      <div class="premise-val">R$ 65.280</div>
-      <div class="premise-note">Total base + 10% para variação de preço/câmbio</div>
+    <div class="budget-total btotal-range">
+      <div class="budget-total-label">📊 Faixa de cenários</div>
+      <div class="budget-total-value" style="font-size:1.2rem">R$ 50–72k</div>
+      <div class="btotal-sub">Econômico a Completo</div>
     </div>
   </div>
 
-  <!-- NOTA -->
-  <div class="parks-note reveal">
-    <strong>Recomendação:</strong> use este orçamento como referência de planejamento e só feche as compras depois de comparar os preços para as datas exatas de fevereiro 2027. Os valores de Lightning Lane variam por data e atração — os preços reais aparecem no <em>My Disney Experience</em> ao adicionar ao carrinho. O Express da Universal também oscila muito conforme a demanda. Assim, conseguiremos decidir com clareza onde o fura-fila realmente compensa para as seis pessoas.
+  <div class="parks-note reveal" style="margin-top:16px">
+    <strong>Recomendação:</strong> use os valores de parques como referência e só feche as compras depois de comparar os preços para as datas exatas de fevereiro 2027. Lightning Lane varia por data e atração (preços no <em>My Disney Experience</em>). Universal Express também oscila conforme a demanda. Câmbio de planejamento: R$5,70/US$ · imposto estimado: 6,5%.
   </div>
-
 </div>
 
 <!-- DICAS -->
