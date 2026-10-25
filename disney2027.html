@@ -154,6 +154,11 @@ details[open] .tl-chevron{transform:rotate(180deg)}
 .tl-body p{font-size:0.9rem;color:var(--fg2);line-height:1.7;margin-top:12px}
 .tl-body ul{margin-top:10px;padding-left:18px;display:flex;flex-direction:column;gap:5px}
 .tl-body li{font-size:0.88rem;color:var(--fg2)}
+.tl-photo{width:100%;height:180px;object-fit:cover;border-radius:var(--radius-sm);margin-top:12px;display:block}
+.tl-photo-caption{font-size:0.72rem;color:var(--fg3);margin-top:5px;font-style:italic}
+.tl-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.tl-photos img{width:100%;height:140px;object-fit:cover;border-radius:var(--radius-sm)}
+
 .tl-highlight{background:linear-gradient(135deg,rgba(212,168,67,0.08),rgba(139,127,212,0.08));border-left:3px solid var(--gold);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:10px 14px;margin-top:12px;font-size:0.88rem;color:var(--fg)}
 .tl-highlight strong{color:var(--gold2)}
 
@@ -494,8 +499,14 @@ details[open] .tl-chevron{transform:rotate(180deg)}
             <ul>
               <li>Escala em Bogotá — visitar La Candelaria e Monserrate se houver tempo</li>
               <li><strong>AV006</strong> BOG→MIA 18h40 — chegada Miami ~22h30</li>
-              <li>Hotel em Miami (31 jan): a reservar ❌ — perto do porto/MIA, US$120–200</li>
+              <li>🏨 Hotel em Miami: a reservar ❌ — perto do porto/MIA, US$120–200</li>
             </ul>
+            <div class="tl-highlight" style="margin-top:14px">
+              <strong>🚌 Miami Day 1 — Hop-On Hop-Off</strong>
+              <p style="margin:6px 0 0">Deixar as malas no hotel ao chegar e aproveitar o dia com o ônibus panorâmico que circula por toda Miami. Embarque e desembarque livre em todos os pontos — South Beach, Wynwood, Brickell, Little Havana.</p>
+            </div>
+            <img class="tl-photo" src="https://www.bigbustours.com/media/citylandingherocomp/image/Big-Bus-Tours_Miami_on_Ocean_Drive_desktop_1_17_1_1.jpg" alt="Hop-On Hop-Off Miami — Big Bus Tours na Ocean Drive" loading="lazy">
+            <p class="tl-photo-caption">🚌 Big Bus Tours · Ocean Drive, Miami Beach</p>
           </div>
         </details>
       </div>
@@ -593,17 +604,30 @@ details[open] .tl-chevron{transform:rotate(180deg)}
           <summary>
             <span class="tl-date">SEX 05/02</span>
             <span class="tl-icon">🏨</span>
-            <span class="tl-dest">Miami → Orlando · Check-in</span>
+            <span class="tl-dest">Miami · Tour · Orlando · Check-in</span>
             <span class="tl-badge travel">Chegada</span>
             <svg class="tl-chevron" viewBox="0 0 16 16"><polyline points="4 6 8 10 12 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </summary>
           <div class="tl-body">
-            <p>Chegada tardia a Orlando. Check-in no Celebration Suites e descanso imediato.</p>
+            <p>Desembarque do Allure of the Seas pela manhã cedo no porto de Miami. Dia de tour pela cidade antes de seguir para Orlando.</p>
             <ul>
-              <li>Nenhuma atividade programada para esta noite</li>
-              <li>Descansar e preparar para os dias intensos de parques</li>
-              <li>Verificar documentos, ingressos e aplicativos Disney/Universal</li>
+              <li>🛳️ Desembarque no Port of Miami — manhã cedo</li>
+              <li>🚌 <strong>Hop-On Hop-Off Miami</strong> — segunda passagem pela cidade (ingresso do dia anterior pode ser válido por 24h)</li>
+              <li>South Beach, Wynwood Arts District, Downtown Miami</li>
+              <li>🍽️ <strong>Almojanta no Rustic Inn Crabhouse</strong> — frutos do mar icônicos da Flórida</li>
+              <li>🚗 Saída para Orlando às ~17h — ~4h de viagem</li>
+              <li>Check-in no Celebration Suites — descanso imediato</li>
             </ul>
+            <div class="tl-photos">
+              <div>
+                <img src="https://www.bigbustours.com/media/citylandingherocomp/image/Big-Bus-Tours_Miami_on_Ocean_Drive_desktop_1_17_1_1.jpg" alt="Hop-On Hop-Off Miami" loading="lazy">
+                <p class="tl-photo-caption">🚌 Hop-On Hop-Off Miami</p>
+              </div>
+              <div>
+                <img src="https://cdn.enprimeurclub.com/storage/v1/object/public/images/locations/rectzLZyd1D9WYWKa/hero2.jpg" alt="Rustic Inn Crabhouse" loading="lazy">
+                <p class="tl-photo-caption">🦀 Rustic Inn Crabhouse</p>
+              </div>
+            </div>
           </div>
         </details>
       </div>
