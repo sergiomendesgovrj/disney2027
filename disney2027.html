@@ -302,6 +302,7 @@ details[open] .tl-chevron{transform:rotate(180deg)}
       <div class="cd-unit"><span class="cd-num" id="cd-d">--</span><span class="cd-label">Dias</span></div>
       <div class="cd-unit"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Horas</span></div>
       <div class="cd-unit"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Min</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Seg</span></div>
     </div>
     <a href="#roteiro" class="hero-cta">
       Explorar nossa viagem
@@ -1543,6 +1544,9 @@ details[open] .tl-chevron{transform:rotate(180deg)}
     if(d_el) d_el.textContent=d;
     if(h_el) h_el.textContent=String(h).padStart(2,'0');
     if(m_el) m_el.textContent=String(mn).padStart(2,'0');
+    var s = Math.floor((diff%60000)/1000);
+    var s_el=document.getElementById('cd-s');
+    if(s_el) s_el.textContent=String(s).padStart(2,'0');
   }
   function start(){ tick(); setInterval(tick,1000); }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',start); } else { start(); }
