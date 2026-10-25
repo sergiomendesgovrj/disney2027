@@ -306,6 +306,35 @@ details[open] .tl-chevron{transform:rotate(180deg)}
 .parks-note strong{color:var(--gold2)}
 
 
+/* ── GUIA DE PARQUES ─────────────────────────────────── */
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:20px}
+.guide-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden}
+.guide-header{display:flex;align-items:center;gap:14px;padding:16px 20px;color:#fff}
+.guide-emoji{font-size:2rem;flex-shrink:0}
+.guide-park-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff}
+.guide-park-date{font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.75);letter-spacing:0.1em;text-transform:uppercase;margin-top:2px}
+.guide-body{padding:16px 20px}
+.guide-tip-row{display:flex;gap:10px;align-items:flex-start;background:rgba(3,76,70,0.06);border:1px solid rgba(3,76,70,0.12);border-radius:8px;padding:10px 12px;margin-bottom:12px}
+.guide-tip-label{flex-shrink:0;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:3px 8px;border-radius:10px;white-space:nowrap;background:rgba(3,76,70,0.12);color:var(--teal)}
+.guide-tip-label.ll{background:rgba(212,168,67,0.15);color:var(--gold)}
+.guide-tip-label.express{background:rgba(191,54,12,0.12);color:#e64a19}
+.guide-tip-text{font-size:0.82rem;color:var(--fg2);line-height:1.55}
+.guide-order-title{font-size:0.78rem;font-weight:700;color:var(--fg);margin-bottom:8px;letter-spacing:0.03em}
+.guide-order ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+.guide-order li{font-size:0.82rem;color:var(--fg2);line-height:1.5}
+.guide-alert{margin-top:12px;padding:10px 12px;border-radius:8px;font-size:0.8rem;color:var(--fg2);background:rgba(3,76,70,0.05);border-left:3px solid var(--teal);line-height:1.5}
+.guide-alert.warning{border-left-color:var(--terra);background:rgba(200,98,74,0.06)}
+/* ── PREP TIMELINE ────────────────────────────────────── */
+.prep-timeline{display:flex;flex-direction:column;gap:32px}
+.prep-month{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden}
+.prep-month-label{padding:14px 20px;font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--teal);background:rgba(3,76,70,0.06);border-bottom:1px solid var(--card-border)}
+.prep-tasks{display:flex;flex-direction:column;gap:0}
+.prep-task{padding:14px 20px;border-bottom:1px solid var(--card-border)}
+.prep-task:last-child{border-bottom:none}
+.prep-task-title{font-size:0.88rem;font-weight:700;color:var(--fg);margin-bottom:5px}
+.prep-task-body{font-size:0.82rem;color:var(--fg2);line-height:1.6}
+.prep-task.urgent .prep-task-title::before{content:"🔴 ";font-size:0.7rem}
+.prep-task.urgent{background:rgba(200,98,74,0.04)}
 /* ── DICAS ────────────────────────────────────────────── */
 .tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
 .tip-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:20px;transition:transform 0.2s,box-shadow 0.2s}
@@ -359,6 +388,8 @@ details[open] .tl-chevron{transform:rotate(180deg)}
   <div class="nav-links">
     <a href="#roteiro">Roteiro</a>
     <a href="#parques">Parques</a>
+    <a href="#guia">Guia</a>
+    <a href="#preparacao">Planejar</a>
     <a href="#hospedagem">Casa</a>
     <a href="#orcamento">Budget</a>
     <a href="#dicas">Dicas</a>
@@ -814,16 +845,16 @@ details[open] .tl-chevron{transform:rotate(180deg)}
 </div><div class="section" id="parques">
   <div class="sec-label">Parques</div>
   <h2 class="sec-title">7 mundos de <em>aventura</em></h2>
-  <p class="sec-sub">Clique em cada parque para ver o roteiro detalhado, dicas de Lightning Lane e atrações para Bia e Duda.</p>
+  <p class="sec-sub">Clique em cada parque para ver o roteiro detalhado, dicas de Lightning Lane e atrações prioritárias.</p>
   <div class="park-grid reveal">
-    <div class="pcard" onclick="openPark('ak')">
-      <div class="pcard-bg" style="background:linear-gradient(135deg,#1b5e20 0%,#33691e 45%,#1565c0 100%)"></div>
-      <div class="pcard-emoji">🦁🌿🦕</div>
+    <div class="pcard" onclick="openPark('mk')">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#1a0533 0%,#4a148c 30%,#880e4f 65%,#b71c1c 100%)"></div>
+      <div class="pcard-emoji">🏰✨🎆</div>
       <div class="pcard-overlay"></div>
       <div class="pcard-content">
         <div class="pcard-date">DOM · 07 FEV</div>
-        <div class="pcard-name">Animal Kingdom</div>
-        <div class="pcard-sub">Pandora · Safaris · Expedition Everest</div>
+        <div class="pcard-name">Magic Kingdom</div>
+        <div class="pcard-sub">TRON · Seven Dwarfs · Festival of Fantasy · Fogos</div>
       </div>
       <div class="pcard-arrow">›</div>
     </div>
@@ -844,8 +875,8 @@ details[open] .tl-chevron{transform:rotate(180deg)}
       <div class="pcard-overlay"></div>
       <div class="pcard-content">
         <div class="pcard-date">TER · 09 FEV</div>
-        <div class="pcard-name">SeaWorld 1ª Visita</div>
-        <div class="pcard-sub">Mako · Manta · Orca Encounter</div>
+        <div class="pcard-name">SeaWorld Orlando</div>
+        <div class="pcard-sub">Pipeline · Mako · Manta · Orca Encounter</div>
       </div>
       <div class="pcard-arrow">›</div>
     </div>
@@ -856,7 +887,7 @@ details[open] .tl-chevron{transform:rotate(180deg)}
       <div class="pcard-content">
         <div class="pcard-date">QUA · 10 FEV</div>
         <div class="pcard-name">Universal Studios</div>
-        <div class="pcard-sub">Diagon Alley · Mardi Gras 2027</div>
+        <div class="pcard-sub">Diagon Alley · Mardi Gras 2027 à noite</div>
       </div>
       <div class="pcard-arrow">›</div>
     </div>
@@ -867,37 +898,35 @@ details[open] .tl-chevron{transform:rotate(180deg)}
       <div class="pcard-content">
         <div class="pcard-date">QUI · 11 FEV</div>
         <div class="pcard-name">Hollywood Studios</div>
-        <div class="pcard-sub">Rise of the Resistance · Galaxy's Edge</div>
+        <div class="pcard-sub">Rise of the Resistance · Galaxy's Edge · Fantasmic!</div>
       </div>
       <div class="pcard-arrow">›</div>
     </div>
     <div class="pcard" onclick="openPark('ep')">
       <div class="pcard-bg" style="background:linear-gradient(135deg,#004d40 0%,#00695c 40%,#0d47a1 100%)"></div>
-      <div class="pcard-emoji">🌍🚀🎆</div>
+      <div class="pcard-emoji">🌍🎨🎶</div>
       <div class="pcard-overlay"></div>
       <div class="pcard-content">
-        <div class="pcard-date">SEX · 12 FEV</div>
+        <div class="pcard-date">SAB · 13 FEV</div>
         <div class="pcard-name">EPCOT</div>
-        <div class="pcard-sub">Guardians · World Showcase · Luminous</div>
+        <div class="pcard-sub">Festival of the Arts · Guardians · World Showcase</div>
       </div>
       <div class="pcard-arrow">›</div>
     </div>
-    <div class="pcard" onclick="openPark('mk')" style="grid-column:1/-1">
-      <div class="pcard-bg" style="background:linear-gradient(135deg,#1a0533 0%,#4a148c 30%,#880e4f 65%,#b71c1c 100%)"></div>
-      <div class="pcard-emoji">🏰✨🎆</div>
+    <div class="pcard" onclick="openPark('ak')" style="grid-column:1/-1">
+      <div class="pcard-bg" style="background:linear-gradient(135deg,#1b5e20 0%,#33691e 45%,#1565c0 100%)"></div>
+      <div class="pcard-emoji">🦁🌿🪐</div>
       <div class="pcard-overlay"></div>
       <div class="pcard-content">
-        <div class="pcard-date">TER · 16 FEV · GRANDE ENCERRAMENTO</div>
-        <div class="pcard-name">Magic Kingdom</div>
-        <div class="pcard-sub">TRON · Seven Dwarfs · Happily Ever After · O dia mais especial da viagem 🌟</div>
+        <div class="pcard-date">DOM · 14 FEV · VALENTINE'S DAY 💕</div>
+        <div class="pcard-name">Animal Kingdom</div>
+        <div class="pcard-sub">Kilimanjaro Safaris · Avatar Flight of Passage · Pandora</div>
       </div>
       <div class="pcard-arrow">›</div>
     </div>
   </div>
 </div>
 
-<!-- HOSPEDAGEM -->
-<div class="divider"></div>
 <div class="section" id="hospedagem">
   <div class="sec-label">Hospedagem</div>
   <h2 class="sec-title">Nossa <em>casa</em> em Orlando</h2>
@@ -1153,6 +1182,341 @@ details[open] .tl-chevron{transform:rotate(180deg)}
 
   <div class="parks-note reveal" style="margin-top:16px">
     <strong>Recomendação:</strong> use os valores de parques como referência e só feche as compras depois de comparar os preços para as datas exatas de fevereiro 2027. Lightning Lane varia por data e atração (preços no <em>My Disney Experience</em>). Universal Express também oscila conforme a demanda. Câmbio de planejamento: R$5,70/US$ · imposto estimado: 6,5%.
+  </div>
+</div>
+
+
+<!-- GUIA DE PARQUES -->
+<div class="divider"></div>
+<div class="section" id="guia">
+  <div class="sec-label">Guia dos Parques</div>
+  <h2 class="sec-title">Touring plans para <em>6 pessoas</em></h2>
+  <p class="sec-sub">Estratégia dia a dia pesquisada para aproveitar 100% — ordem das atrações, Lightning Lane, dicas de grupo.</p>
+
+  <div class="guide-grid reveal">
+
+    <!-- MAGIC KINGDOM -->
+    <div class="guide-card">
+      <div class="guide-header" style="background:linear-gradient(135deg,#4a148c,#880e4f)">
+        <span class="guide-emoji">🏰</span>
+        <div>
+          <div class="guide-park-name">Magic Kingdom</div>
+          <div class="guide-park-date">DOM 07/02</div>
+        </div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-tip-row">
+          <span class="guide-tip-label ll">⚡ Lightning Lane</span>
+          <span class="guide-tip-text">Comprar LLMP às 7h do dia (não-hóspede Disney). Single Pass: TRON Lightcycle Run e Seven Dwarfs Mine Train assim que abrir.</span>
+        </div>
+        <div class="guide-order">
+          <div class="guide-order-title">🚀 Ordem sugerida no parque</div>
+          <ol>
+            <li><strong>Rope drop:</strong> direto ao TRON Lightcycle / Run (se SP já garantido, use fila standby para Tomorrowland)</li>
+            <li>Space Mountain (manhã = fila curta)</li>
+            <li>Big Thunder Mountain Railroad</li>
+            <li>Haunted Mansion (<em>use como "burner" do LLMP</em> — redime logo para desbloquear próxima seleção)</li>
+            <li>Peter Pan's Flight via Lightning Lane (Tier 1 — fila standby costuma passar de 60 min)</li>
+            <li>Tiana's Bayou Adventure via Lightning Lane</li>
+            <li>Pirates of the Caribbean + Jungle Cruise (fila curta no meio do dia)</li>
+            <li>🎭 <strong>Festival of Fantasy Parade</strong> — ver horário no app</li>
+            <li>Seven Dwarfs Mine Train via Single Pass</li>
+            <li>🎆 <strong>Happily Ever After</strong> — fogos, chegar 45 min antes para posição</li>
+          </ol>
+        </div>
+        <div class="guide-alert">💡 Grupo de 6: reservem Lightning Lane para todos ao mesmo tempo. Use o app My Disney Experience com uma conta "líder" que gerencie o grupo.</div>
+      </div>
+    </div>
+
+    <!-- ISLANDS OF ADVENTURE -->
+    <div class="guide-card">
+      <div class="guide-header" style="background:linear-gradient(135deg,#4a0080,#1565c0)">
+        <span class="guide-emoji">🧙</span>
+        <div>
+          <div class="guide-park-name">Islands of Adventure</div>
+          <div class="guide-park-date">SEG 08/02</div>
+        </div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-tip-row">
+          <span class="guide-tip-label express">🎫 Express Pass</span>
+          <span class="guide-tip-text">Considere comprar o Express Pass Universal (R$600–900/pessoa). VelociCoaster, Hulk e Forbidden Journey têm filas de 45–60 min. Vale muito para grupo de 6.</span>
+        </div>
+        <div class="guide-alert warning">⚠️ Hagrid's Motorbike Adventure NÃO está no Express Pass! Rope drop obrigatório ou tente à noite.</div>
+        <div class="guide-order">
+          <div class="guide-order-title">🚀 Ordem sugerida no parque</div>
+          <ol>
+            <li><strong>Rope drop:</strong> corra direto para Hagrid's Magical Creatures Motorbike Adventure (limite de altura: 122cm)</li>
+            <li>Flight of the Hippogriff (Hogsmeade) — aproveite que está perto</li>
+            <li>Harry Potter and the Forbidden Journey (dentro do castelo)</li>
+            <li>VelociCoaster (Jurassic World) — melhor coaster do parque!</li>
+            <li>Almoço em Three Broomsticks (butterbeer 🍺)</li>
+            <li>Jurassic Park River Adventure (atenção: você FICA molhado)</li>
+            <li>The Amazing Adventures of Spider-Man</li>
+            <li>Incredible Hulk Coaster</li>
+            <li>Reign of Kong</li>
+            <li>Passeio pelo Hogsmeade no final do dia para fotos</li>
+          </ol>
+        </div>
+        <div class="guide-alert">💡 Restrições de altura: Hagrid's 122cm, VelociCoaster 137cm, Hulk 137cm. Verificar Bia e Duda com antecedência!</div>
+      </div>
+    </div>
+
+    <!-- SEAWORLD -->
+    <div class="guide-card">
+      <div class="guide-header" style="background:linear-gradient(135deg,#01579b,#006064)">
+        <span class="guide-emoji">🦈</span>
+        <div>
+          <div class="guide-park-name">SeaWorld Orlando</div>
+          <div class="guide-park-date">TER 09/02</div>
+        </div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-tip-row">
+          <span class="guide-tip-label">📅 Dia da semana</span>
+          <span class="guide-tip-text">Terça é um dos dias mais tranquilos do SeaWorld. Vantagem enorme para grupo de 6!</span>
+        </div>
+        <div class="guide-order">
+          <div class="guide-order-title">🚀 Ordem sugerida no parque</div>
+          <ol>
+            <li><strong>Rope drop:</strong> Pipeline: The Surf Coaster (ride must-do #1 do parque)</li>
+            <li>Mako (hipercoaster 200 pés — o mais alto do parque)</li>
+            <li>Ice Breaker (4 lançamentos — diferente!)</li>
+            <li>Manta (flying coaster)</li>
+            <li>🐋 <strong>Orca Encounter</strong> — show educativo, ver grade de horários</li>
+            <li>Almoço: All-Day Dining Plan vale para grupos (buffet ilimitado ~$45/pessoa)</li>
+            <li>Shark Encounter + Sea Turtle exhibit (caminhada tranquila)</li>
+            <li>Kraken (fila mais curta à tarde)</li>
+            <li>Journey to Atlantis (atenção: molha bastante)</li>
+            <li>Penguin Trek — ótimo para crianças</li>
+          </ol>
+        </div>
+        <div class="guide-alert">💡 Kriya: deixar Journey to Atlantis e Wild Arctic para o final — você FICA MOLHADO. Leve roupa extra ou poncho.</div>
+      </div>
+    </div>
+
+    <!-- UNIVERSAL STUDIOS -->
+    <div class="guide-card">
+      <div class="guide-header" style="background:linear-gradient(135deg,#bf360c,#4a148c)">
+        <span class="guide-emoji">🪄</span>
+        <div>
+          <div class="guide-park-name">Universal Studios Florida</div>
+          <div class="guide-park-date">QUA 10/02 + Mardi Gras 🎭</div>
+        </div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-tip-row">
+          <span class="guide-tip-label">🎉 Mardi Gras 2027</span>
+          <span class="guide-tip-text">Festival de 6/2 a 27/3/2027. Desfile incluso no ingresso todas as noites! Shows musicais à parte (ver grade). Chegue 30 min antes do desfile para boa posição.</span>
+        </div>
+        <div class="guide-order">
+          <div class="guide-order-title">🚀 Ordem sugerida no parque</div>
+          <ol>
+            <li><strong>Rope drop:</strong> Escape from Gringotts (Diagon Alley — fila cresce rápido)</li>
+            <li>Revenge of the Mummy</li>
+            <li>Hollywood Rip Ride Rockit</li>
+            <li>Almoço em Leaky Cauldron (Diagon Alley) — butterbeer gelado 🍺</li>
+            <li>MEN IN BLACK Alien Attack (família toda pode jogar)</li>
+            <li>Transformers: The Ride-3D</li>
+            <li>The Simpsons Ride</li>
+            <li>🌅 Jantar → posição para o Desfile Mardi Gras</li>
+            <li>🎭 Mardi Gras Parade — colliers/miçangas grátis!</li>
+            <li>Shows musicais Mardi Gras (ver grade do dia)</li>
+          </ol>
+        </div>
+        <div class="guide-alert">💡 Dia longo! Parque + festival à noite. Salve energia: evite fila em atrações secundárias de tarde — guarde para o Mardi Gras.</div>
+      </div>
+    </div>
+
+    <!-- HOLLYWOOD STUDIOS -->
+    <div class="guide-card">
+      <div class="guide-header" style="background:linear-gradient(135deg,#1a237e,#880e4f)">
+        <span class="guide-emoji">⭐</span>
+        <div>
+          <div class="guide-park-name">Hollywood Studios</div>
+          <div class="guide-park-date">QUI 11/02</div>
+        </div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-tip-row">
+          <span class="guide-tip-label ll">⚡ Lightning Lane</span>
+          <span class="guide-tip-text">Single Pass: Rise of the Resistance (fila pode chegar 90 min). Multi Pass: Slinky Dog Dash e Mickey &amp; Minnie's Runaway Railway primeiro.</span>
+        </div>
+        <div class="guide-order">
+          <div class="guide-order-title">🚀 Ordem sugerida no parque</div>
+          <ol>
+            <li><strong>Rope drop:</strong> direto a Star Wars: Rise of the Resistance (se sem SP, vai na abertura)</li>
+            <li>Millennium Falcon: Smugglers Run (Galaxy's Edge)</li>
+            <li>Slinky Dog Dash via Lightning Lane (Toy Story Land)</li>
+            <li>Toy Story Mania! (família toda — competição de pontos!)</li>
+            <li>Mickey &amp; Minnie's Runaway Railway via Lightning Lane</li>
+            <li>Alien Swirling Saucers (crianças adoram)</li>
+            <li>🎭 For the First Time in Forever: Frozen Sing-Along</li>
+            <li>Twilight Zone Tower of Terror</li>
+            <li>Rock 'n' Roller Coaster</li>
+            <li>🌊 <strong>Fantasmic!</strong> — show noturno imperdível. Chegar 1h antes para lugar</li>
+          </ol>
+        </div>
+        <div class="guide-alert">💡 O dia seguinte (12/2) é NBA — chegue em casa cedo. Se Fantasmic! tiver 2 sessões, prefira a primeira (menos cheia).</div>
+      </div>
+    </div>
+
+    <!-- EPCOT -->
+    <div class="guide-card">
+      <div class="guide-header" style="background:linear-gradient(135deg,#004d40,#0d47a1)">
+        <span class="guide-emoji">🌍</span>
+        <div>
+          <div class="guide-park-name">EPCOT</div>
+          <div class="guide-park-date">SAB 13/02 · Festival of the Arts</div>
+        </div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-tip-row">
+          <span class="guide-tip-label">🎨 Festival</span>
+          <span class="guide-tip-text">Festival of the Arts 15/1–1/3/2027: 19 Food Studios temáticos, Disney on Broadway no America Gardens Theatre (incluso no ingresso), chalk art, artistas ao vivo.</span>
+        </div>
+        <div class="guide-order">
+          <div class="guide-order-title">🚀 Ordem sugerida no parque</div>
+          <ol>
+            <li><strong>Rope drop:</strong> Guardians of the Galaxy: Cosmic Rewind (fila supera 90 min depois)</li>
+            <li>Test Track (renovado)</li>
+            <li>Soarin' Around the World via Lightning Lane</li>
+            <li>Mission: SPACE (laranja — experiência intensa!)</li>
+            <li>🎨 Explorar Food Studios do Festival — passeio pelo World Showcase</li>
+            <li>Frozen Ever After (Norway Pavilion)</li>
+            <li>Remy's Ratatouille Adventure (France Pavilion)</li>
+            <li>Passeio pelo World Showcase — Italia, Japão, Marrocos...</li>
+            <li>🎶 Disney on Broadway no America Gardens Theatre (sessão noturna)</li>
+            <li>🌟 <strong>Luminous: The Global Celebration</strong> — show de fogos e projeções</li>
+          </ol>
+        </div>
+        <div class="guide-alert">💡 Festival of the Arts: os Food Studios ficam lotados à tarde. Experimente os pratos pela manhã e volte para repetir os favoritos à tarde.</div>
+      </div>
+    </div>
+
+    <!-- ANIMAL KINGDOM -->
+    <div class="guide-card" style="grid-column:1/-1">
+      <div class="guide-header" style="background:linear-gradient(135deg,#1b5e20,#1565c0)">
+        <span class="guide-emoji">🦁</span>
+        <div>
+          <div class="guide-park-name">Animal Kingdom · Valentine's Day 💕</div>
+          <div class="guide-park-date">DOM 14/02 · Parque fecha mais cedo</div>
+        </div>
+      </div>
+      <div class="guide-body">
+        <div class="guide-tip-row">
+          <span class="guide-tip-label ll">⚡ Lightning Lane</span>
+          <span class="guide-tip-text">Single Pass: Avatar Flight of Passage (fila chega a 3h!). LLMP: Na'vi River Journey, Kilimanjaro Safaris e Festival of the Lion King — só 5 rides disponíveis no LLMP.</span>
+        </div>
+        <div class="guide-order">
+          <div class="guide-order-title">🚀 Ordem sugerida no parque</div>
+          <ol>
+            <li><strong>Rope drop (DECISÃO):</strong> ou corre para Pandora (Avatar Flight of Passage) <em>ou</em> vai para Kilimanjaro Safaris. Se tem Single Pass do Flight of Passage, vai para o Safári!</li>
+            <li>🌿 <strong>Kilimanjaro Safaris</strong> — animais mais ativos de manhã cedo, fila curta</li>
+            <li>Avatar Flight of Passage (Pandora) via Single Pass — o ride mais incrível da Disney</li>
+            <li>Na'vi River Journey (Pandora) via Lightning Lane</li>
+            <li>Expedition Everest (use single rider se quiser agilizar)</li>
+            <li>🎭 <strong>Festival of the Lion King</strong> — show imperdível! (via Lightning Lane ou fique na fila 30 min antes)</li>
+            <li>Kali River Rapids (só se estiver calor — fica ENCHARCADO)</li>
+            <li>Finding Nemo: The Big Blue... and Beyond! (show)</li>
+            <li>Passeio pelo Discovery Island para fotos com a Árvore da Vida</li>
+            <li>💕 Valentine's Day: jantar especial depois do parque!</li>
+          </ol>
+        </div>
+        <div class="guide-alert">💡 Animal Kingdom fecha mais cedo (geralmente 19h ou 20h). Planeje sair sem pressa — jantar romântico de Valentine's Day em seguida!</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PREPARAÇÃO ANTECIPADA -->
+<div class="divider"></div>
+<div class="section" id="preparacao">
+  <div class="sec-label">Ação Imediata</div>
+  <h2 class="sec-title">O que fazer <em>agora</em> para garantir tudo</h2>
+  <p class="sec-sub">Planejamento mês a mês para novembro e dezembro — o que agendar, reservar e comprar antes da viagem.</p>
+
+  <div class="prep-timeline reveal">
+
+    <div class="prep-month">
+      <div class="prep-month-label">🗓️ NOVEMBRO 2026</div>
+      <div class="prep-tasks">
+        <div class="prep-task urgent">
+          <div class="prep-task-title">🎫 Comprar ingressos dos parques Disney</div>
+          <div class="prep-task-body">Magic Kingdom, Hollywood Studios, EPCOT e Animal Kingdom. Compre direto em <strong>disneyworld.disney.go.com</strong>. Preço sobe conforme a data se aproxima. Para 6 pessoas, confirme os nomes exatos conforme passaporte.</div>
+        </div>
+        <div class="prep-task urgent">
+          <div class="prep-task-title">🎫 Comprar ingressos Universal (IOA + USF)</div>
+          <div class="prep-task-body">2 parques, 2 dias. Verifique pacotes Park-to-Park. Considere Express Pass para os 2 dias — Hagrid's NÃO está incluído (rope drop obrigatório).</div>
+        </div>
+        <div class="prep-task urgent">
+          <div class="prep-task-title">🎫 Comprar ingresso SeaWorld</div>
+          <div class="prep-task-body">Ingresso para 1 dia (ou 2 se quiser opção de retorno em 15/2). Verifique se All-Day Dining Plan vale para o grupo.</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">🏀 Confirmar ingressos NBA</div>
+          <div class="prep-task-body">Orlando Magic × Miami Heat, 12/02/2027, 19h — Kia Center. Comprar em <strong>ticketmaster.com</strong> ou app NBA. Sentar junto para grupo de 6 requer ação rápida.</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">📱 Criar contas My Disney Experience</div>
+          <div class="prep-task-body">Todos do grupo precisam ter conta linkada. Um "líder" gerencia o grupo e faz reservas para todos. Baixar o app no celular de cada um.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prep-month">
+      <div class="prep-month-label">🗓️ DEZEMBRO 2026</div>
+      <div class="prep-tasks">
+        <div class="prep-task urgent">
+          <div class="prep-task-title">⚡ Lightning Lane Single Pass — TRON e Seven Dwarfs</div>
+          <div class="prep-task-body">Hóspedes Disney: abrir às 7h, 7 dias antes de cada parque. Não-hóspedes: 3 dias antes. Para MK (07/02): reservar TRON e Seven Dwarfs às 07h de 04/02. Isso vale a pena acordar cedo!</div>
+        </div>
+        <div class="prep-task urgent">
+          <div class="prep-task-title">🍽️ Reservas de restaurantes Disney (ADR)</div>
+          <div class="prep-task-body">A janela abre 60 dias antes: reservas para 07/02 abrem em 08/12/2026. Restaurantes populares esgotam em horas. Sugestões: <strong>Be Our Guest</strong> (MK), <strong>Space 220</strong> (EPCOT), <strong>Sci-Fi Dine-In</strong> (HS), <strong>Tiffins</strong> (AK). Reserve às 06h EST = 08h BRT.</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">⚡ Lightning Lane Multi Pass — estratégia por parque</div>
+          <div class="prep-task-body">Comprar LLMP no app para cada dia de parque. MK: primeiro pick = Haunted Mansion (burner), depois Peter Pan e Tiana. EPCOT: Soarin'. HS: Slinky Dog + Mickey Railway. AK: Na'vi + Safaris. Não-hóspedes: comprar 3 dias antes de cada visita.</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">⚡ Avatar Flight of Passage — Single Pass</div>
+          <div class="prep-task-body">A atração mais concorrida do Animal Kingdom. Single Pass disponível 3–7 dias antes (conforme hospedagem). Não pule esta etapa — fila standby chega a 3 horas.</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">🚗 Confirmar aluguel de carro</div>
+          <div class="prep-task-body">Para 6 pessoas, confirme veículo com 7 lugares (minivan ou SUV). Seguro básico incluído? Verificar se cobre os estados Florida + Miami. Devolução no aeroporto de Miami.</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">📋 Verificar alturas de Bia e Duda</div>
+          <div class="prep-task-body">VelociCoaster e Incredible Hulk: 137cm mínimo. Hagrid's Motorbike: 122cm. TRON e Rise of the Resistance: 102cm. Flight of Passage: 112cm. Medir com antecedência para não ter surpresa no parque!</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">🎭 Mardi Gras 2027 — grade de shows</div>
+          <div class="prep-task-body">A grade de artistas do Mardi Gras será divulgada em dezembro. Verificar qual show cai na noite de 10/02 e chegar com antecedência para posição. Shows musicais têm palco separado do desfile.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prep-month">
+      <div class="prep-month-label">📌 JANEIRO / FEVEREIRO 2027 (últimos passos)</div>
+      <div class="prep-tasks">
+        <div class="prep-task">
+          <div class="prep-task-title">⚡ Reservar Lightning Lane nos 7 dias anteriores (hóspedes Disney)</div>
+          <div class="prep-task-body">Se hospedar no Celebration Suites (não é hotel Disney), a janela é de 3 dias antes. Confirmar política do hotel com antecedência.</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">🍽️ Reservar Sharks Underwater Grill (SeaWorld)</div>
+          <div class="prep-task-body">Único restaurante com reserva no SeaWorld. Para grupo de 6, reservar com antecedência em seaworldorlando.com.</div>
+        </div>
+        <div class="prep-task">
+          <div class="prep-task-title">🎶 EPCOT Disney on Broadway — Dining Package</div>
+          <div class="prep-task-body">Para garantir assento na apresentação do Festival of the Arts, considere o Dining Package (jantar + assento reservado). Disponível em restaurantes EPCOT — verificar datas de abertura.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
