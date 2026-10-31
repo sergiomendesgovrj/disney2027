@@ -400,6 +400,10 @@ details[open] .tl-chevron{transform:rotate(180deg)}
 .cot-tab.active,.cot-tab:hover{background:var(--teal);border-color:var(--teal);color:#fff}
 .cot-panel{display:none}.cot-panel.active{display:block}
 .cot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.cot-subgroup{margin-bottom:32px}
+.cot-subgroup-header{display:flex;align-items:center;gap:10px;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg3);padding-bottom:10px;margin-bottom:16px;border-bottom:1px solid var(--card-border)}
+.cot-compare-label{font-size:0.6rem;background:rgba(9,90,230,0.18);color:var(--teal3);border-radius:4px;padding:2px 7px;letter-spacing:0.05em;font-weight:600}
+.cot-subgroup .cot-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 .cot-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s}
 .cot-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
 .cot-card-img{aspect-ratio:16/9;overflow:hidden;position:relative;background:#070a12}
@@ -1683,7 +1687,10 @@ Mas olha o site que eu fiz pra viagem 👀</div>
 
   <!-- === HOSPEDAGEM === -->
   <div class="cot-panel active" id="cot-hospedagem">
-    <div class="cot-grid">
+    <!-- Subgroup: Hotel -->
+    <div class="cot-subgroup">
+      <div class="cot-subgroup-header">🏨 Hotel <span class="cot-compare-label">compare</span></div>
+      <div class="cot-grid">
 
       <!-- Card 1: Vacation Village -->
       <div class="cot-card reveal">
@@ -1802,6 +1809,13 @@ Mas olha o site que eu fiz pra viagem 👀</div>
         </div>
       </div>
 
+      </div><!-- /cot-grid hotel -->
+    </div><!-- /cot-subgroup hotel -->
+
+    <!-- Subgroup: Casa -->
+    <div class="cot-subgroup">
+      <div class="cot-subgroup-header">🏠 Casa</div>
+      <div class="cot-grid">
       <!-- Card 3: Encantada Resort -->
       <div class="cot-card reveal">
         <div class="cot-card-img-gallery" style="display:flex;gap:3px;padding:3px;height:160px">
@@ -1843,8 +1857,9 @@ Mas olha o site que eu fiz pra viagem 👀</div>
         </div>
       </div>
 
-    </div>
-  </div>
+      </div><!-- /cot-grid casa -->
+    </div><!-- /cot-subgroup casa -->
+  </div><!-- /cot-hospedagem -->
 
   <!-- === CARRO === -->
   <div class="cot-panel" id="cot-carro">
@@ -1936,8 +1951,10 @@ Mas olha o site que eu fiz pra viagem 👀</div>
 
   <!-- === PARQUES === -->
   <div class="cot-panel" id="cot-parques">
-    <div class="cot-grid">
-
+    <!-- Subgroup: Disney -->
+    <div class="cot-subgroup">
+      <div class="cot-subgroup-header">🏰 Disney <span class="cot-compare-label">compare</span></div>
+      <div class="cot-grid">
       <!-- Card: Disney -->
       <div class="cot-card reveal">
         <div class="cot-card-img" style="background:linear-gradient(135deg,#0a1628 0%,#1a2a4a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
@@ -1964,74 +1981,6 @@ Mas olha o site que eu fiz pra viagem 👀</div>
             <div>
               <div class="cot-price">R$ 19.355,92</div>
               <div class="cot-price-sub">à vista (PIX/boleto) · 10x R$ 20.482,45</div>
-            </div>
-          </div>
-          <div class="cot-actions">
-            <a href="https://reservas.vamonessa.com.br/pt/checkout/e518aa43c5ee4350bcb3606278b4f27b" target="_blank" class="cot-btn cot-btn-primary">Ver cotação</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: Universal -->
-      <div class="cot-card reveal">
-        <div class="cot-card-img" style="background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
-          <span style="font-size:3rem">🌎🎬</span>
-          <span style="font-size:0.85rem;font-weight:700;color:#d1e8ff;letter-spacing:0.05em">UNIVERSAL ORLANDO</span>
-        </div>
-        <div class="cot-company">
-          <span class="cot-company-name">Vamonessa</span>
-          <span class="cot-status analise">Em análise</span>
-        </div>
-        <div class="cot-card-body">
-          <div class="cot-card-title">Universal Orlando — 2 Dias Park to Park</div>
-          <div class="cot-card-meta">
-            📅 09/02/2027<br>
-            👥 6 adultos · 2 dias<br>
-            🎠 Universal Studios + Islands of Adventure + Epic Universe
-          </div>
-          <div class="cot-features">
-            <span class="cot-feat">2 dias</span>
-            <span class="cot-feat">Park to Park</span>
-            <span class="cot-feat">Epic Universe incluso</span>
-          </div>
-          <div class="cot-price-row">
-            <div>
-              <div class="cot-price">R$ 11.369,17</div>
-              <div class="cot-price-sub">à vista (PIX/boleto) · 10x R$ 12.030,85</div>
-            </div>
-          </div>
-          <div class="cot-actions">
-            <a href="https://reservas.vamonessa.com.br/pt/checkout/e518aa43c5ee4350bcb3606278b4f27b" target="_blank" class="cot-btn cot-btn-primary">Ver cotação</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card: SeaWorld -->
-      <div class="cot-card reveal">
-        <div class="cot-card-img" style="background:linear-gradient(135deg,#020d1a 0%,#03183a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
-          <span style="font-size:3rem">🐋🌊</span>
-          <span style="font-size:0.85rem;font-weight:700;color:#d1e8ff;letter-spacing:0.05em">SEAWORLD ORLANDO</span>
-        </div>
-        <div class="cot-company">
-          <span class="cot-company-name">Vamonessa</span>
-          <span class="cot-status analise">Em análise</span>
-        </div>
-        <div class="cot-card-body">
-          <div class="cot-card-title">SeaWorld Orlando — 2 e 3 Dias</div>
-          <div class="cot-card-meta">
-            📅 07/02/2027<br>
-            👥 6 adultos · 2-3 dias<br>
-            🎠 Com Plano Refeição Promocional incluso
-          </div>
-          <div class="cot-features">
-            <span class="cot-feat">2-3 dias</span>
-            <span class="cot-feat">Plano refeição grátis</span>
-            <span class="cot-feat">Promoção</span>
-          </div>
-          <div class="cot-price-row">
-            <div>
-              <div class="cot-price">R$ 4.737,21</div>
-              <div class="cot-price-sub">à vista (PIX/boleto) · 10x R$ 5.012,94</div>
             </div>
           </div>
           <div class="cot-actions">
@@ -2076,6 +2025,47 @@ Mas olha o site que eu fiz pra viagem 👀</div>
         </div>
       </div>
 
+      </div><!-- /grid -->
+    </div><!-- /subgroup Disney -->
+
+    <!-- Subgroup: Universal -->
+    <div class="cot-subgroup">
+      <div class="cot-subgroup-header">🎭 Universal <span class="cot-compare-label">compare</span></div>
+      <div class="cot-grid">
+      <!-- Card: Universal -->
+      <div class="cot-card reveal">
+        <div class="cot-card-img" style="background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+          <span style="font-size:3rem">🌎🎬</span>
+          <span style="font-size:0.85rem;font-weight:700;color:#d1e8ff;letter-spacing:0.05em">UNIVERSAL ORLANDO</span>
+        </div>
+        <div class="cot-company">
+          <span class="cot-company-name">Vamonessa</span>
+          <span class="cot-status analise">Em análise</span>
+        </div>
+        <div class="cot-card-body">
+          <div class="cot-card-title">Universal Orlando — 2 Dias Park to Park</div>
+          <div class="cot-card-meta">
+            📅 09/02/2027<br>
+            👥 6 adultos · 2 dias<br>
+            🎠 Universal Studios + Islands of Adventure + Epic Universe
+          </div>
+          <div class="cot-features">
+            <span class="cot-feat">2 dias</span>
+            <span class="cot-feat">Park to Park</span>
+            <span class="cot-feat">Epic Universe incluso</span>
+          </div>
+          <div class="cot-price-row">
+            <div>
+              <div class="cot-price">R$ 11.369,17</div>
+              <div class="cot-price-sub">à vista (PIX/boleto) · 10x R$ 12.030,85</div>
+            </div>
+          </div>
+          <div class="cot-actions">
+            <a href="https://reservas.vamonessa.com.br/pt/checkout/e518aa43c5ee4350bcb3606278b4f27b" target="_blank" class="cot-btn cot-btn-primary">Ver cotação</a>
+          </div>
+        </div>
+      </div>
+
       <!-- Card: VPO — Universal -->
       <div class="cot-card reveal">
         <div class="cot-card-img" style="background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
@@ -2108,6 +2098,47 @@ Mas olha o site que eu fiz pra viagem 👀</div>
           </div>
           <div class="cot-actions">
             <a href="https://loja.vpoexperience.com/pt/checkout/d355f0b8c87f43a39d18b2be845a2f22" target="_blank" class="cot-btn cot-btn-primary">Ver cotação VPO</a>
+          </div>
+        </div>
+      </div>
+
+      </div><!-- /grid -->
+    </div><!-- /subgroup Universal -->
+
+    <!-- Subgroup: SeaWorld -->
+    <div class="cot-subgroup">
+      <div class="cot-subgroup-header">🌊 SeaWorld <span class="cot-compare-label">compare</span></div>
+      <div class="cot-grid">
+      <!-- Card: SeaWorld -->
+      <div class="cot-card reveal">
+        <div class="cot-card-img" style="background:linear-gradient(135deg,#020d1a 0%,#03183a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px">
+          <span style="font-size:3rem">🐋🌊</span>
+          <span style="font-size:0.85rem;font-weight:700;color:#d1e8ff;letter-spacing:0.05em">SEAWORLD ORLANDO</span>
+        </div>
+        <div class="cot-company">
+          <span class="cot-company-name">Vamonessa</span>
+          <span class="cot-status analise">Em análise</span>
+        </div>
+        <div class="cot-card-body">
+          <div class="cot-card-title">SeaWorld Orlando — 2 e 3 Dias</div>
+          <div class="cot-card-meta">
+            📅 07/02/2027<br>
+            👥 6 adultos · 2-3 dias<br>
+            🎠 Com Plano Refeição Promocional incluso
+          </div>
+          <div class="cot-features">
+            <span class="cot-feat">2-3 dias</span>
+            <span class="cot-feat">Plano refeição grátis</span>
+            <span class="cot-feat">Promoção</span>
+          </div>
+          <div class="cot-price-row">
+            <div>
+              <div class="cot-price">R$ 4.737,21</div>
+              <div class="cot-price-sub">à vista (PIX/boleto) · 10x R$ 5.012,94</div>
+            </div>
+          </div>
+          <div class="cot-actions">
+            <a href="https://reservas.vamonessa.com.br/pt/checkout/e518aa43c5ee4350bcb3606278b4f27b" target="_blank" class="cot-btn cot-btn-primary">Ver cotação</a>
           </div>
         </div>
       </div>
@@ -2145,8 +2176,10 @@ Mas olha o site que eu fiz pra viagem 👀</div>
         </div>
       </div>
 
-    </div>
-  </div>
+      </div><!-- /grid -->
+    </div><!-- /subgroup SeaWorld -->
+
+  </div><!-- /cot-parques -->
 
 </div>
 
